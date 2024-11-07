@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Admob-Native - AdPro-HD</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Admob-Native";
+        var mkdocs_page_input_path = "ad/admob-native.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> AdPro-HD
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Trang chủ</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Bắt đầu nhanh</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../started/">Triển khai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adsdk/">AdsSDK</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Các loại ad</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Admob-Native</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#doc-admob">Doc Admob</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ho-tro-cac-inh-dang">Hỗ trợ các định dạng</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hien-thi">Hiển thị</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-truoc">Load trước</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lay-trang-thai">Lấy trạng thái</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#huy-bo">Huỷ bỏ</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#thoi-gian-giua-cac-lan-load-moi">Thời gian giữa các lần load mới</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#admobnative">AdmobNative</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#doc-admob_1">Doc Admob</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ho-tro-cac-inh-dang_1">Hỗ trợ các định dạng</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hien-thi_1">Hiển thị</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-truoc_1">Load trước</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lay-trang-thai_1">Lấy trạng thái</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#huy-bo_1">Huỷ bỏ</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#thoi-gian-giua-cac-lan-load-moi_1">Thời gian giữa các lần load mới</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-banner/">Admob-Banner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-inter/">Admob-Inter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-inter-splash/">Admob-Inter-Splash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-open-resume/">Admob-Open-Resume</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-open-splash/">Admob-Open-Splash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-reward/">Admob-Reward</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-reward-inter/">Admob-Reward-Inter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Một vài tính năng khác</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cached-key/">Cơ chế cached key</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../custom-loading/">Custom loading ad</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../config-load-ad-real/">Cấu hình load ad thật</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../disable-ad-version/">Tắt ad theo version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../floating-debug-view/">Floating view debug</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../end/">Cuối cùng</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">AdPro-HD</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Các loại ad</li>
+      <li class="breadcrumb-item active">Admob-Native</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="admobbanner">AdmobBanner<a class="headerlink" href="#admobbanner" title="Permanent link">&para;</a></h1>
+<h2 id="doc-admob"><a href="https://developers.google.com/admob/android/banner?hl=vi">Doc Admob</a><a class="headerlink" href="#doc-admob" title="Permanent link">&para;</a></h2>
+<h2 id="ho-tro-cac-inh-dang"><strong>Hỗ trợ các định dạng</strong><a class="headerlink" href="#ho-tro-cac-inh-dang" title="Permanent link">&para;</a></h2>
+<ul>
+<li>banner_adaptive</li>
+<li>banner_300x250</li>
+<li>banner_collapsible_top</li>
+<li>banner_collapsible_bottom</li>
+</ul>
+<h2 id="hien-thi"><strong>Hiển thị</strong><a class="headerlink" href="#hien-thi" title="Permanent link">&para;</a></h2>
+<p>Hàm hiển thị một ad banner lên một view cho trước.</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+<p><strong>adContainer :</strong> ViewGroup chứa ad .</p>
+<p><strong>layoutLoadingRes :</strong> Một reslayout chứa view loading, null sẽ hiển thị layout loading mặc định</p>
+<p><strong>forceLoadNewAdIfShowed</strong>: Nếu true sẽ load ad mới  vào lần hiển thị tiếp theo mỗi khi ad trước hiển thị thành công, false sẽ hiển thị lại lại ad cũ và sẽ không load mới ad</p>
+<p><strong>lifecycle :</strong> Đối với AdCollapsible thì cần truyền viewLifecycleOwner.lifecycle( đối với fragment ) với activity bạn phải tự xử lí chuyển màn đóng collapsible. Còn lại bạn có thể để giá trị null</p>
+<p><strong>adCallback :</strong>  Callback lại trạng thái ad</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobBanner.show(
+        space: String,
+        adContainer: ViewGroup,
+        @LayoutRes layoutLoadingRes: Int? = null,
+        forceLoadNewAdIfShowed: Boolean = false,
+        lifecycle: Lifecycle? = null,
+        adCallback: AdCallback? = null
+    )
+</code></pre>
+<h2 id="load-truoc"><strong>Load trước</strong><a class="headerlink" href="#load-truoc" title="Permanent link">&para;</a></h2>
+<p>Load trước ad để hiển thị ad nhanh hơn.</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+<p><strong>forceLoadNew:</strong> True thì sẽ  load mới ads bất kể ad mang trạng thái nào. False sẽ chỉ load mới khi ad hết hạn  hoặc ad mang trạng thái lỗi ,không load đè lại khi đang có ad sẵn kể cả là đã show</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobBanner.load(
+        space: String,  
+        forceLoadNew: Boolean = false,  
+        adCallback: AdCallback? = null
+    )
+</code></pre>
+<h2 id="lay-trang-thai"><strong>Lấy trạng thái</strong><a class="headerlink" href="#lay-trang-thai" title="Permanent link">&para;</a></h2>
+<p>Lấy trạng thái của ad hiện tại được chứa trong mapCached</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobBanner.getStatusBySpace(space: String): AdStatus?
+</code></pre>
+<h2 id="huy-bo"><strong>Huỷ bỏ</strong><a class="headerlink" href="#huy-bo" title="Permanent link">&para;</a></h2>
+<p>Huỷ bỏ một ad và xoá ad đó ra khỏi map cached</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobBanner.destroyAdBySpace(space: String)
+</code></pre>
+<h2 id="thoi-gian-giua-cac-lan-load-moi"><strong>Thời gian giữa các lần load mới</strong><a class="headerlink" href="#thoi-gian-giua-cac-lan-load-moi" title="Permanent link">&para;</a></h2>
+<p>Đối với hàm show sẽ hiển thị lại các ad cũ trước đó (nếu giá trị **forceLoadNewAdIfShowed ** = false). Nhưng thời gian hiển thị tiếp so với lần Ad Impression gần nhất  mà vượt quá giá trị này thì hàm show sẽ load mới ad.</p>
+<blockquote>
+<p><strong>value:</strong> Giá trị  thời gian để lần gọi tiếp theo hàm show sẽ load và hiển thị ad mới.</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdsSDK.setTimeForceLoadNewBanner(millisecond: Long): AdsSDK
+</code></pre>
+<h2 id="admobnative">AdmobNative<a class="headerlink" href="#admobnative" title="Permanent link">&para;</a></h2>
+<h2 id="doc-admob_1"><a href="https://developers.google.com/admob/android/native?hl=vi">Doc Admob</a><a class="headerlink" href="#doc-admob_1" title="Permanent link">&para;</a></h2>
+<h2 id="ho-tro-cac-inh-dang_1"><strong>Hỗ trợ các định dạng</strong><a class="headerlink" href="#ho-tro-cac-inh-dang_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>native</li>
+</ul>
+<h2 id="hien-thi_1"><strong>Hiển thị</strong><a class="headerlink" href="#hien-thi_1" title="Permanent link">&para;</a></h2>
+<p>Hàm hiển thị một ad native ad lên một view cho trước</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+<p><strong>adContainer :</strong> ViewGroup chứa ad .</p>
+<p><strong>layoutRes</strong> : Một reslayout chứa design của ad native theo ý muốn.</p>
+<p><strong>layoutLoadingRes :</strong> Một reslayout chứa view loading, null sẽ hiển thị layout loading mặc định.</p>
+<p><strong>forceLoadNewAdIfShowed</strong>: Nếu true sẽ load ad mới  vào lần hiển thị tiếp theo mỗi khi ad trước hiển thị thành công, false sẽ hiển thị lại lại ad cũ và sẽ không load mới ad.</p>
+<p><strong>adCallback :</strong>  Callback lại trạng thái ad .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobNative.show(
+        space: String,
+        adContainer: ViewGroup,
+        @LayoutRes layoutRes: Int,
+        @LayoutRes layoutLoadingRes: Int? = null,
+        forceLoadNewAdIfShowed: Boolean = false,
+        adCallback: AdCallback? = null,
+    )
+</code></pre>
+<h2 id="load-truoc_1"><strong>Load trước</strong><a class="headerlink" href="#load-truoc_1" title="Permanent link">&para;</a></h2>
+<p>Load trước ad để hiển thị ad nhanh hơn.</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+<p><strong>forceLoadNew:</strong> True thì sẽ  load mới ads bất kể ad mang trạng thái nào. False sẽ chỉ load mới khi ad hết hạn  hoặc ad mang trạng thái lỗi , không load đè lại khi đang có ad sẵn kể cả là đã show.</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobNative.load(
+        space: String,  
+        forceLoadNew: Boolean = false,  
+        adCallback: AdCallback? = null
+    )
+</code></pre>
+<h2 id="lay-trang-thai_1"><strong>Lấy trạng thái</strong><a class="headerlink" href="#lay-trang-thai_1" title="Permanent link">&para;</a></h2>
+<p>Lấy trạng thái của ad hiện tại được chứa trong mapCached</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobNative.getStatusBySpace(space: String): AdStatus?
+</code></pre>
+<h2 id="huy-bo_1"><strong>Huỷ bỏ</strong><a class="headerlink" href="#huy-bo_1" title="Permanent link">&para;</a></h2>
+<p>Huỷ bỏ một ad và xoá ad đó ra khỏi map cached</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobNative.destroyAdBySpace(space: String)
+</code></pre>
+<h2 id="thoi-gian-giua-cac-lan-load-moi_1"><strong>Thời gian giữa các lần load mới</strong><a class="headerlink" href="#thoi-gian-giua-cac-lan-load-moi_1" title="Permanent link">&para;</a></h2>
+<p>Đối với hàm show sẽ hiển thị lại các ad cũ trước đó (nếu giá trị **forceLoadNewAdIfShowed ** = false). Nhưng thời gian hiển thị tiếp so với lần Ad Impression gần nhất  mà vượt quá giá trị này thì hàm show sẽ load mới ad.</p>
+<blockquote>
+<p><strong>value:</strong> Giá trị  thời gian để lần gọi tiếp theo hàm show sẽ load và hiển thị ad mới.</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdsSDK.setTimeForceLoadNewNative(millisecond: Long): AdsSDK
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../adsdk/" class="btn btn-neutral float-left" title="AdsSDK"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../admob-banner/" class="btn btn-neutral float-right" title="Admob-Banner">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../adsdk/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../admob-banner/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
