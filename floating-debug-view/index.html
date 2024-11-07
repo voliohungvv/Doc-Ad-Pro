@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Floating view debug - AdPro-HD</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Floating view debug";
+        var mkdocs_page_input_path = "floating-debug-view.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AdPro-HD
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Trang chủ</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Bắt đầu nhanh</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../started/">Triển khai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/adsdk/">AdsSDK</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Các loại ad</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/admob-native/">Admob-Native</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/admob-banner/">Admob-Banner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/admob-inter/">Admob-Inter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/admob-inter-splash/">Admob-Inter-Splash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/admob-open-resume/">Admob-Open-Resume</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/admob-open-splash/">Admob-Open-Splash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/admob-reward/">Admob-Reward</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/admob-reward-inter/">Admob-Reward-Inter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Một vài tính năng khác</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../cached-key/">Cơ chế cached key</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../custom-loading/">Custom loading ad</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config-load-ad-real/">Cấu hình load ad thật</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../disable-ad-version/">Tắt ad theo version</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Floating view debug</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../end/">Cuối cùng</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AdPro-HD</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Một vài tính năng khác</li>
+      <li class="breadcrumb-item active">Floating view debug</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="su-dung-floating-debug-view">Sử dụng floating debug view<a class="headerlink" href="#su-dung-floating-debug-view" title="Permanent link">&para;</a></h1>
+<p>Debug view sẽ hiển thị dưới dạng một floating button chạy service và cần có quyền <strong>SYSTEM_ALERT_WINDOW</strong>. Tính năng này đang được phát triển và đã có thể thử nghiệm.</p>
+<p>:pushpin: <strong>Một vài tính năng thử nghiệm</strong></p>
+<ul>
+<li>Thêm nút mở ad inspector của admob thay vì lắc.</li>
+<li>Xem các thông số isPremium, TimebetweenInter, versionNameDisable, Class IgnoreAdResume ...</li>
+<li>Xem thông tin ad được bật, id, trạng thái ad trong thư viện như [Error, Loading, Loaded, Error] realtime.</li>
+<li>Xem thông tin chi tiết về các callback của một ad theo space realtime.</li>
+<li>Xuất log ad vào file txt để debug.</li>
+</ul>
+<pre><code class="language-kotlin">    AdsSDK.showDebugView(context: Context) // chạy service debug view
+    AdsSDK.hideDebugView(context: Context) // dừng service debug view
+    AdsSDK.autoShowDebugView(value: Boolean, keepDebugViewWhenAppDestroy: Boolean): AdsSDK // tự động hiển thị khi app chạy
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../disable-ad-version/" class="btn btn-neutral float-left" title="Tắt ad theo version"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../end/" class="btn btn-neutral float-right" title="Cuối cùng">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../disable-ad-version/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../end/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
