@@ -1,0 +1,32 @@
+site_name: AdPro-HD
+theme: readthedocs
+custom_dir: theme
+
+nav:
+  - Trang chủ: index.md
+  - Bắt đầu nhanh: 
+    - Triển khai: started.md
+    - AdsSDK: ad/adsdk.md
+  - Các loại ad: 
+    - Admob-Native: ad/admob-native.md
+    - Admob-Banner: ad/admob-banner.md
+    - Admob-Inter: ad/admob-inter.md
+    - Admob-Inter-Splash: ad/admob-inter-splash.md
+    - Admob-Open-Resume: ad/admob-open-resume.md
+    - Admob-Open-Splash: ad/admob-open-splash.md
+    - Admob-Reward: ad/admob-reward.md
+    - Admob-Reward-Inter: ad/admob-reward-inter.md
+  - Một vài tính năng khác: 
+    - Cơ chế cached key: cached-key.md
+    - Custom loading ad: custom-loading.md
+    - Cấu hình load ad thật : config-load-ad-real.md
+    - Tắt ad theo version : disable-ad-version.md
+    - Floating view debug : floating-debug-view.md
+    - Cuối cùng : end.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      
+extra_css:
+  - css/custom.css
