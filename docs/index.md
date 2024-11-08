@@ -4,6 +4,13 @@
 implementation 'com.android.fullhd.adssdk:AdsPro:1.0.0'
 ```
 
+```grovy
+maven{
+    url = "http://repo.volio.vn/repository/maven-s3/"
+    allowInsecureProtocol = true   
+}
+```
+
 
 # Các tính năng hỗ trợ chính
 - Custom layout loading cho tất cả các loại Ad

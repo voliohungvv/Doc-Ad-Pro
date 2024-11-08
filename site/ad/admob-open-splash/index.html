@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Admob-Open-Splash - AdPro-HD</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Admob-Open-Splash";
+        var mkdocs_page_input_path = "ad\\admob-open-splash.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> AdPro-HD
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Trang chủ</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Bắt đầu nhanh</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../started/">Triển khai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adsdk/">AdsSDK</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Các loại ad</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-native/">Admob-Native</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-banner/">Admob-Banner</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-inter/">Admob-Inter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-inter-splash/">Admob-Inter-Splash</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-open-resume/">Admob-Open-Resume</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Admob-Open-Splash</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#doc-admob">Doc Admob</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ho-tro-cac-inh-dang">Hỗ trợ các định dạng</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hien-thi">Hiển thị</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-truoc">Load trước</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-va-hien-thi">load và hiển thị</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lay-trang-thai">Lấy trạng thái</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#huy-bo">Huỷ bỏ</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#thoi-gian-giua-cac-lan-hien-thi-2-ad-chung-cached-key">Thời gian giữa các lần hiển thị 2 ad chung cached key</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cau-hinh-key-trong-mapcached">Cấu hình key trong mapCached</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cau-hinh-dialog-loading">Cấu hình dialog loading</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#thoi-gian-toi-thieu-dialog-hien-truoc-khi-show-ad">Thời gian tối thiểu dialog hiện trước khi show ad</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-reward/">Admob-Reward</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-reward-inter/">Admob-Reward-Inter</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Một vài tính năng khác</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cached-key/">Cơ chế cached key</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../custom-loading/">Custom loading ad</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../config-load-ad-real/">Cấu hình load ad thật</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../disable-ad-version/">Tắt ad theo version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../floating-debug-view/">Floating view debug</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../end/">Cuối cùng</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">AdPro-HD</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Các loại ad</li>
+      <li class="breadcrumb-item active">Admob-Open-Splash</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="admobopensplash">AdmobOpenSplash<a class="headerlink" href="#admobopensplash" title="Permanent link">&para;</a></h1>
+<h2 id="doc-admob"><a href="https://developers.google.com/admob/android/app-open?hl=vi">Doc Admob</a><a class="headerlink" href="#doc-admob" title="Permanent link">&para;</a></h2>
+<p>Với định dạng ad này quảng cáo load trước sẽ bị hết giá trị sau 4 tiếng  do vậy . Ad sau 1 tiếng kể từ khi load mà chưa được hiển thị sẽ rơi vào trạng thái <strong>Error</strong></p>
+<h2 id="ho-tro-cac-inh-dang"><strong>Hỗ trợ các định dạng</strong><a class="headerlink" href="#ho-tro-cac-inh-dang" title="Permanent link">&para;</a></h2>
+<ul>
+<li>open_app_splash</li>
+</ul>
+<h2 id="hien-thi"><strong>Hiển thị</strong><a class="headerlink" href="#hien-thi" title="Permanent link">&para;</a></h2>
+<p>Hàm hiển thị một ad inter <strong>Đã có trạng thái loaded</strong> lên toàn màn </p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+<p><strong>lifecycle:</strong> lifecycle này sẽ giúp hiển thị ad khi activity/fragment quay trở lại resume, tránh show dưới background. Đối số này có thể null nhưng bạn sẽ phải chấp nhận ad có thể failed to show nếu app in background.</p>
+<p><strong>autoShowLoading</strong> : True sẽ hỗ trở hiển thị dialog loading. False sẽ không hiển thị.</p>
+<p><strong>ignoreTimeBetweenAd:</strong> Thời gian tối thiểu giữa 2 lần show ad .True sẽ không bị ràng buộc bởi thời gian 2 lần show ad cùng <strong>Key cached</strong>. False sẽ chịu ảnh hưởng bởi timebetween trong thư viện.</p>
+<p><strong>adCallback :</strong>  Callback lại trạng thái ad .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobOpenSplash.show(
+        space: String,  
+        lifecycle: Lifecycle?,  
+        adCallback: AdCallback? = null,  
+        autoShowLoading: Boolean = false,  
+        ignoreTimeBetweenAd: Boolean = false,
+    )
+</code></pre>
+<h2 id="load-truoc"><strong>Load trước</strong><a class="headerlink" href="#load-truoc" title="Permanent link">&para;</a></h2>
+<p>Load trước ad để hiển thị ad nhanh hơn.</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+<p><strong>timeoutMillisecond:</strong> Thời gian timeout load ad phản hồi.  mặc định là 20_000 milisec</p>
+<p><strong>adCallback :</strong>  Callback lại trạng thái ad .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobOpenSplash.load(
+        space: String,
+        adCallback: AdCallback? = null,
+        timeoutMillisecond: Long = 20_000L,
+    )
+</code></pre>
+<h2 id="load-va-hien-thi"><strong>load và hiển thị</strong><a class="headerlink" href="#load-va-hien-thi" title="Permanent link">&para;</a></h2>
+<p>Hàm sẽ bắt đầu load một ad và  hiển thị luôn lên toàn màn hình</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+<p><strong>lifecycle:</strong> lifecycle này sẽ giúp hiển thị ad khi activity/fragment quay trở lại resume, tránh show dưới background. Đối số này có thể null nhưng bạn sẽ phải chấp nhận ad có thể failed to show nếu app in background.</p>
+<p><strong>autoShowLoading</strong> : True sẽ hỗ trở hiển thị dialog loading. False sẽ không hiển thị.</p>
+<p><strong>timeoutMillisecond:</strong> Thời gian timeout load ad phản hồi.  mặc định là 20_000 milisec.</p>
+<p><strong>ignoreTimeBetweenAd:</strong> Thời gian tối thiểu giữa 2 lần show ad .True sẽ không bị ràng buộc bởi thời gian 2 lần show ad cùng <strong>Key cached</strong>. False sẽ chịu ảnh hưởng bởi timebetween trong thư viện.</p>
+<p><strong>adCallback :</strong>  Callback lại trạng thái ad .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobOpenSplash.loadAndShow(
+        space: String,
+        lifecycle: Lifecycle?,
+        adCallback: AdCallback?,
+        autoShowLoading: Boolean = true,
+        timeoutMillisecond: Long = 20_000L,
+        ignoreTimeBetweenAd: Boolean = false,
+    )
+</code></pre>
+<h2 id="lay-trang-thai"><strong>Lấy trạng thái</strong><a class="headerlink" href="#lay-trang-thai" title="Permanent link">&para;</a></h2>
+<p>Lấy trạng thái của ad hiện tại được chứa trong mapCached</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobOpenSplash.getStatusBySpace(space: String): AdStatus?
+</code></pre>
+<h2 id="huy-bo"><strong>Huỷ bỏ</strong><a class="headerlink" href="#huy-bo" title="Permanent link">&para;</a></h2>
+<p>Huỷ bỏ một ad và xoá ad đó ra khỏi map cached</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobOpenSplash.destroyAdBySpace(space: String)
+</code></pre>
+<h2 id="thoi-gian-giua-cac-lan-hien-thi-2-ad-chung-cached-key"><strong>Thời gian giữa các lần hiển thị 2 ad chung cached key</strong><a class="headerlink" href="#thoi-gian-giua-cac-lan-hien-thi-2-ad-chung-cached-key" title="Permanent link">&para;</a></h2>
+<p>Thời gian tối thiểu giữa  2 lần hiển thị ad chung cached key. <strong>Cached key</strong> ở đây có thể là space hoặc id  ad tuỳ thuộc vào option bạn cấu hình</p>
+<blockquote>
+<p><strong>timeBetweenMillisecond:</strong> Giá trị  thời gian để lần gọi tiếp theo hàm show sẽ load và hiển thị ad mới mặc định là 15_000.</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobOpenSplash.setTimeBetween(timeBetweenMillisecond: Long): AdmobOpenSplash
+    AdmobOpenSplash.getTimeBetween(): Long
+</code></pre>
+<h2 id="cau-hinh-key-trong-mapcached"><strong>Cấu hình key trong mapCached</strong><a class="headerlink" href="#cau-hinh-key-trong-mapcached" title="Permanent link">&para;</a></h2>
+<p><strong>Cached key</strong> ở đây có thể là space hoặc id  ad tuỳ thuộc vào option bạn cấu hình. Giá trị này áp dụng cho toàn bộ lớp</p>
+<p>Đối với các ad inter mà bạn có thể muốn tắt bật ở nhiều vị trí. Bạn có thể cần nhắc cache theo id ad. và tách nhiều space . Vẫn đảm bảo show chung 1 space nhưng có nhiều space để bạn tắt</p>
+<blockquote>
+<p><strong>value:</strong> True sẽ là cached theo space. False sẽ cached theo id.</p>
+<p><strong>space:</strong> Trả về cached key theo space name.</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobOpenSplash.setCachedBySpace(value: Boolean): AdmobOpenSplash
+    AdmobOpenSplash.getKeyCached(space: String): String
+</code></pre>
+<h2 id="cau-hinh-dialog-loading"><strong>Cấu hình dialog loading</strong><a class="headerlink" href="#cau-hinh-dialog-loading" title="Permanent link">&para;</a></h2>
+<p>Hỗ trợ cấu hình dialog bao gồm cả layout và các giá trị thuộc tính của dialog.
+Mặc định đã có dialog hiển thị. Giá trị này áp dụng cho toàn bộ lớp</p>
+<blockquote>
+<p><strong>resLayout:</strong> Một layout chứa design cho dialog loading .</p>
+<p><strong>configurator:</strong> Một interface ghi đè lại các cấu hình dialog mà bạn muốn hiển thị.</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobOpenSplash.setDialogConfigurator(
+        @LayoutRes resLayout: Int?,
+        configurator: DialogLoadingConfigurator?,
+    )
+</code></pre>
+<h2 id="thoi-gian-toi-thieu-dialog-hien-truoc-khi-show-ad"><strong>Thời gian tối thiểu dialog hiện trước khi show ad</strong><a class="headerlink" href="#thoi-gian-toi-thieu-dialog-hien-truoc-khi-show-ad" title="Permanent link">&para;</a></h2>
+<p>Vì ad bạn có thể đã preload hoặc ad có thể hiện luôn nhưng bạn vẫn muốn hiển thị dialog. Do vậy rất có thể dialog hiện và ẩn nhanh có thể gây trải nghiệm xấu. Đây là thời gian tối thiểu hiện dialog trước khi show ad. Giá trị này áp dụng cho toàn bộ lớp.</p>
+<blockquote>
+<p><strong>value:</strong> Giá trị  thời gian milisec tối thiểu hiện dialog mặc định là 2_000.</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobOpenSplash.setMinTimeShowDialog(value: Long): AdmobInterSplash
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../admob-open-resume/" class="btn btn-neutral float-left" title="Admob-Open-Resume"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../admob-reward/" class="btn btn-neutral float-right" title="Admob-Reward">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../admob-open-resume/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../admob-reward/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
