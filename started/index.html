@@ -112,7 +112,15 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="bat-au">Bắt đầu<a class="headerlink" href="#bat-au" title="Permanent link">&para;</a></h1>
-<p><strong>Bước 1:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json</strong></p>
+<p><strong>Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)</strong></p>
+<pre><code>implementation 'com.android.fullhd.adssdk:AdsPro:1.0.0'
+</code></pre>
+<pre><code class="language-grovy">maven{
+    url = &quot;http://repo.volio.vn/repository/maven-s3/&quot;
+    allowInsecureProtocol = true   
+}
+</code></pre>
+<p><strong>Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json</strong></p>
 <pre><code class="language-json">{
   &quot;versionNameDisable&quot;: &quot;dev_2.0.0&quot;,
   &quot;listAds&quot;: [
@@ -189,7 +197,7 @@
 }
 
 </code></pre>
-<p><strong>Bước 2:  Init AdSDK</strong></p>
+<p><strong>Bước 3:  Init AdSDK</strong></p>
 <pre><code class="language-kotlin">    AdsSDK.init(
         application = this,
         pathAssetConfigAds = &quot;config.json&quot;,
@@ -204,11 +212,284 @@
         .enableTiktokEvent(false)
         .autoShowDebugView(BuildConfig.DEBUG, false) // show debug view
 </code></pre>
-<p>📌 <strong>Bước 3:  Triển khai CMP trước khi load các ad khác</strong></p>
+<p>📌 <strong>Bước 4:  Triển khai CMP trước khi load các ad khác</strong></p>
 <pre><code class="language-kotlin">    AdsSDK.showCMP(activity: AppCompatActivity, isTesting: Boolean = false, onDone: () -&gt; Unit)
 </code></pre>
-<p>📌 <strong>Tham khảo file <a href="https://gitlab.volio.vn/govo-tech/hd/Ads-Pro/-/blob/develop/app/src/main/java/com/android/fullhd/hd_ad/ads/AdUtils.kt">AdUtils.kt</a> một vài loại ad</strong></p>
-<p><strong>Tham khảo <a href="https://gitlab.volio.vn/govo-tech/hd/Ads-Pro/-/tree/develop/app/src/main/java/com/android/fullhd/hd_ad">Example</a></strong></p>
+<p>📌 <strong>Tham khảo dưới đây một vài loại ad</strong></p>
+<pre><code>  fun BaseFragment&lt;*, *&gt;.showBannerAdaptive(space: String, adContainer: ViewGroup, loadNew: Boolean = true) {
+    AdmobBanner.show(
+        space = space,
+        adContainer = adContainer,
+        layoutLoadingRes = R.layout.layout_loading_ad_view_common,
+        forceLoadNewAdIfShowed = loadNew,
+        lifecycle = null,
+        adCallback = object : AdCallback {
+            override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+                Tracking.logPairValueBanner(screenName, bundle)
+            }
+
+            override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+                adContainer.gone(true)
+            }
+
+        })
+}
+
+
+fun BaseActivity&lt;*&gt;.showBannerAdaptive(space: String, adContainer: ViewGroup, loadNew: Boolean = true) {
+    AdmobBanner.show(
+        space = space,
+        adContainer = adContainer,
+        layoutLoadingRes = R.layout.layout_loading_ad_view_common,
+        forceLoadNewAdIfShowed = loadNew,
+        lifecycle = null,
+        adCallback = object : AdCallback {
+            override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+                Tracking.logPairValueBanner(screenName, bundle)
+            }
+
+            override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+                adContainer.gone(true)
+            }
+
+        })
+}
+
+
+fun BaseFragment&lt;*, *&gt;.showBannerCollapsible(
+    space: String,
+    adContainer: ViewGroup,
+) {
+    AdmobBanner.show(
+        space = space,
+        adContainer = adContainer,
+        layoutLoadingRes = R.layout.layout_loading_ad_view_common,
+        forceLoadNewAdIfShowed = true,
+        lifecycle = viewLifecycleOwner.lifecycle,
+        adCallback = object : AdCallback {
+            override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+                Tracking.logPairValueBanner(screenName, bundle)
+            }
+
+            override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+                adContainer.gone(true)
+            }
+
+        })
+}
+
+fun BaseFragment&lt;*, *&gt;.showNative(
+    space: String,
+    adContainer: ViewGroup,
+    @LayoutRes layout: Int,
+    loadNew: Boolean = false
+) {
+
+    AdmobNative.show(
+        space = space,
+        adContainer = adContainer,
+        layoutRes = layout,
+        forceLoadNewAdIfShowed = loadNew,
+        layoutLoadingRes = R.layout.layout_loading_ad_view_common,
+        adCallback = object : AdCallback {
+            override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+                Tracking.logPairValueNative(screenName, bundle)
+            }
+
+            override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+                adContainer.gone(true)
+            }
+
+        })
+}
+
+fun BaseActivity&lt;*&gt;.showNative(
+    space: String,
+    adContainer: ViewGroup,
+    @LayoutRes layout: Int,
+    loadNew: Boolean = false
+) {
+    AdmobNative.show(
+        space = space,
+        adContainer = adContainer,
+        layoutRes = layout,
+        forceLoadNewAdIfShowed = loadNew,
+        layoutLoadingRes = R.layout.layout_loading_ad_view_common,
+        adCallback = object : AdCallback {
+            override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+                Tracking.logPairValueNative(screenName, bundle)
+            }
+
+            override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+                adContainer.gone(true)
+            }
+        })
+}
+
+
+fun BaseFragment&lt;*, *&gt;.showInterNextAction(
+    space: String = &quot;ADMOB_Interstitial_Gerneral&quot;,
+    curScreen: String = screenName,
+    nextScreen: String = &quot;&quot;,
+    nextAction: () -&gt; Unit
+) {
+    val status = AdsSDK.getStatusBySpace(space)
+    if (status == AdStatus.LOADED) {
+        AdmobInter.show(
+            space,
+            autoShowLoading = false,
+            lifecycle = lifecycle,
+            adCallback = object : AdCallback {
+
+                override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+                    super.onAdPaidValueListener(adsModel, bundle)
+                    Tracking.logPairValueInter(curScreen, nextScreen, bundle)
+                }
+
+                override fun onAdFailedToShowFullScreenContent(
+                    adsModel: AdModel,
+                    error: AdSDKError?
+                ) {
+                    super.onAdFailedToShowFullScreenContent(adsModel, error)
+                    nextAction.invoke()
+                }
+
+                override fun onAdFailedToLoad(adsModel: AdModel, error: AdSDKError?) {
+                    super.onAdFailedToLoad(adsModel, error)
+                    nextAction.invoke()
+                }
+
+                override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+                    super.onAdOff(adsModel, error)
+                    nextAction.invoke()
+                }
+
+                override fun onAdShowedFullScreenContent(adsModel: AdModel) {
+                    super.onAdShowedFullScreenContent(adsModel)
+                    delayHandler(200) {
+                        nextAction.invoke()
+                    }
+                }
+
+                override fun onAdDismissedFullScreenContent(adsModel: AdModel) {
+                    super.onAdDismissedFullScreenContent(adsModel)
+                    val timeRemote = AdmobInter.getTimeBetween()
+                    val timeLoadAds = 4_000L
+                    val timeDelay = (timeRemote - timeLoadAds).coerceAtLeast(timeLoadAds)
+                    delayHandler(timeDelay) {
+                        AdmobInter.load(space)
+                    }
+                }
+            })
+    } else {
+        nextAction.invoke()
+        if (AdsSDK.shouldLoadAdFullScreenIfMissing(space)) {
+            AdmobInter.load(space)
+        }
+    }
+}
+
+
+fun BaseActivity&lt;*&gt;.showInterSplashAction(
+    space: String,
+    curScreen: String = screenName,
+    nextScreen: String = &quot;&quot;,
+    nextAction: () -&gt; Unit
+) {
+
+    AdmobInterSplash.loadAndShow(
+        space = space,
+        lifecycle = lifecycle,
+        adCallback = object : AdCallback {
+
+            override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+                super.onAdPaidValueListener(adsModel, bundle)
+                Tracking.logPairValueInter(curScreen, nextScreen, bundle)
+            }
+
+            override fun onAdFailedToShowFullScreenContent(
+                adsModel: AdModel,
+                error: AdSDKError?
+            ) {
+                super.onAdFailedToShowFullScreenContent(adsModel, error)
+                nextAction.invoke()
+            }
+
+            override fun onAdFailedToLoad(adsModel: AdModel, error: AdSDKError?) {
+                super.onAdFailedToLoad(adsModel, error)
+                nextAction.invoke()
+            }
+
+            override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+                super.onAdOff(adsModel, error)
+                nextAction.invoke()
+                Log.e(TAG, &quot;onAdOff  ${adsModel.spaceName}&quot;)
+            }
+
+            override fun onAdDismissedFullScreenContent(adsModel: AdModel) {
+                super.onAdDismissedFullScreenContent(adsModel)
+                nextAction.invoke()
+            }
+        })
+}
+
+
+fun BaseActivity&lt;*&gt;.showOpenSplashAction(
+    space: String,
+    curScreen: String = screenName,
+    nextScreen: String = &quot;&quot;,
+    nextAction: () -&gt; Unit
+) {
+
+    AdmobOpenSplash.loadAndShow(
+        space = space,
+        lifecycle = lifecycle,
+        adCallback = object : AdCallback {
+
+            override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+                super.onAdPaidValueListener(adsModel, bundle)
+                Tracking.logPairValueInter(curScreen, nextScreen, bundle)
+            }
+
+            override fun onAdFailedToShowFullScreenContent(
+                adsModel: AdModel,
+                error: AdSDKError?
+            ) {
+                super.onAdFailedToShowFullScreenContent(adsModel, error)
+                nextAction.invoke()
+            }
+
+            override fun onAdFailedToLoad(adsModel: AdModel, error: AdSDKError?) {
+                super.onAdFailedToLoad(adsModel, error)
+                nextAction.invoke()
+            }
+
+            override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+                super.onAdOff(adsModel, error)
+                nextAction.invoke()
+            }
+
+            override fun onAdDismissedFullScreenContent(adsModel: AdModel) {
+                super.onAdDismissedFullScreenContent(adsModel)
+                nextAction.invoke()
+            }
+        })
+}
+
+fun BaseActivity&lt;*&gt;.autoShowAdResume(space: String) {
+    AdmobOpenResume.loadAndAutoShowIfAvailable(space, object : AdCallback {
+        override fun onAdPaidValueListener(adModel: AdModel, bundle: Bundle) {
+            Tracking.logPairValueOpen(
+                ScreenTracking.currentScreen,
+                ScreenTracking.currentScreen,
+                bundle
+            )
+        }
+    })
+}
+
+</code></pre>
+<p><strong>Tham khảo <a href="https://gitlab.volio.vn/govo-tech/hd/Ads-Pro/-/tree/develop/app/src/main/java/com/android/fullhd/hd_ad">Example</a> nếu có quyền :)</strong></p>
               
             </div>
           </div><footer>
