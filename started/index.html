@@ -52,6 +52,8 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ad/adsdk/">AdsSDK</a>
                   </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../log-update/">Cập nhật version</a>
+                  </li>
               </ul>
               <p class="caption"><span class="caption-text">Các loại ad</span></p>
               <ul>
@@ -113,7 +115,7 @@
               
                 <h1 id="bat-au">Bắt đầu<a class="headerlink" href="#bat-au" title="Permanent link">&para;</a></h1>
 <p><strong>Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)</strong></p>
-<pre><code>implementation 'com.android.fullhd.adssdk:AdsPro:1.0.0'
+<pre><code>implementation 'com.android.fullhd.adssdk:AdsPro:x.x.x'
 </code></pre>
 <pre><code class="language-grovy">maven{
     url = &quot;http://repo.volio.vn/repository/maven-s3/&quot;
@@ -210,7 +212,7 @@
         .setTimeForceLoadNewNative(10_000)
         .enableAppsflyer(&quot;key&quot;)// cần cấu hình thư viện IAP nếu crash
         .enableTiktokEvent(false)
-        .autoShowDebugView(BuildConfig.DEBUG, false) // show debug view
+        .autoShowDebugView(BuildConfig.DEBUG, false) // show debug view chỉ nên bật khi test ad
 </code></pre>
 <p>📌 <strong>Bước 4:  Triển khai CMP trước khi load các ad khác</strong></p>
 <pre><code class="language-kotlin">    AdsSDK.showCMP(activity: AppCompatActivity, isTesting: Boolean = false, onDone: () -&gt; Unit)
@@ -489,7 +491,7 @@ fun BaseActivity&lt;*&gt;.autoShowAdResume(space: String) {
 }
 
 </code></pre>
-<p><strong>Tham khảo <a href="https://gitlab.volio.vn/govo-tech/hd/Ads-Pro/-/tree/develop/app/src/main/java/com/android/fullhd/hd_ad">Example</a> nếu có quyền :)</strong></p>
+<!-- **Tham khảo [Example](https://gitlab.volio.vn/govo-tech/hd/Ads-Pro/-/tree/develop/app/src/main/java/com/android/fullhd/hd_ad) nếu có quyền :)** -->
               
             </div>
           </div><footer>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Cuối cùng - AdPro-HD</title>
+    <title>Cập nhật version - AdPro-HD</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Cu\u1ed1i c\u00f9ng";
-        var mkdocs_page_input_path = "end.md";
+        var mkdocs_page_name = "C\u1eadp nh\u1eadt version";
+        var mkdocs_page_input_path = "log-update.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -45,12 +45,16 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Bắt đầu nhanh</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../started/">Triển khai</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ad/adsdk/">AdsSDK</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../log-update/">Cập nhật version</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Cập nhật version</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version-101">Version 1.0.1</a>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Các loại ad</span></p>
@@ -73,7 +77,7 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Một vài tính năng khác</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../cached-key/">Cơ chế cached key</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../custom-loading/">Custom loading ad</a>
@@ -84,7 +88,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../floating-debug-view/">Floating view debug</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Cuối cùng</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../end/">Cuối cùng</a>
                   </li>
               </ul>
       </div>
@@ -101,8 +105,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Một vài tính năng khác</li>
-      <li class="breadcrumb-item active">Cuối cùng</li>
+          <li class="breadcrumb-item">Bắt đầu nhanh</li>
+      <li class="breadcrumb-item active">Cập nhật version</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -111,12 +115,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><center><p align="center"> Một thư viện ad mới. Lúc hiện lúc không hiện có khi là lỗi. </p></center></p>
+                <h1 id="thay-oi-cac-version">Thay đổi các version<a class="headerlink" href="#thay-oi-cac-version" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Các thay đổi update qua các version sẽ hiện ở đây.</li>
+</ul>
+<h2 id="version-101">Version 1.0.1<a class="headerlink" href="#version-101" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix lỗi ad native và ad banner load thừa trên dialog gây giảm show rate.</li>
+<li>Fix lỗi timeout CMP tự động chuyển khi hết thời gian -&gt; Chỉ timeout khi form CMP chưa hiện. Nếu hiện rồi thì huỷ timeout</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../floating-debug-view/" class="btn btn-neutral float-left" title="Floating view debug"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ad/adsdk/" class="btn btn-neutral float-left" title="AdsSDK"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ad/admob-native/" class="btn btn-neutral float-right" title="Admob-Native">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -139,8 +152,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../floating-debug-view/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../ad/adsdk/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../ad/admob-native/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
