@@ -7,6 +7,7 @@ nav:
   - Bắt đầu nhanh: 
     - Triển khai: started.md
     - AdsSDK: ad/adsdk.md
+    - Cập nhật version: log-update.md
   - Các loại ad: 
     - Admob-Native: ad/admob-native.md
     - Admob-Banner: ad/admob-banner.md

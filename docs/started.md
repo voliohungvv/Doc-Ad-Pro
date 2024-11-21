@@ -2,7 +2,7 @@
 
 **Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)**
 ```
-implementation 'com.android.fullhd.adssdk:AdsPro:1.0.0'
+implementation 'com.android.fullhd.adssdk:AdsPro:x.x.x'
 ```
 
 ```grovy
@@ -106,7 +106,7 @@ maven{
         .setTimeForceLoadNewNative(10_000)
         .enableAppsflyer("key")// cần cấu hình thư viện IAP nếu crash
         .enableTiktokEvent(false)
-        .autoShowDebugView(BuildConfig.DEBUG, false) // show debug view
+        .autoShowDebugView(BuildConfig.DEBUG, false) // show debug view chỉ nên bật khi test ad
 ```
 📌 **Bước 4:  Triển khai CMP trước khi load các ad khác**
 
@@ -391,4 +391,4 @@ fun BaseActivity<*>.autoShowAdResume(space: String) {
 
 ```
 
-**Tham khảo [Example](https://gitlab.volio.vn/govo-tech/hd/Ads-Pro/-/tree/develop/app/src/main/java/com/android/fullhd/hd_ad) nếu có quyền :)**
+<!-- **Tham khảo [Example](https://gitlab.volio.vn/govo-tech/hd/Ads-Pro/-/tree/develop/app/src/main/java/com/android/fullhd/hd_ad) nếu có quyền :)** -->

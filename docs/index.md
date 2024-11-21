@@ -1,7 +1,8 @@
 # Thư viện Ad-Pro
 
+Vui lòng luôn update phiên bản mới nhất
 ```
-implementation 'com.android.fullhd.adssdk:AdsPro:1.0.0'
+implementation 'com.android.fullhd.adssdk:AdsPro:1.0.1'
 ```
 
 ```grovy
