@@ -2,7 +2,7 @@
 
 Vui lòng luôn update phiên bản mới nhất
 ```
-implementation 'com.android.fullhd.adssdk:AdsPro:1.0.1'
+implementation 'com.android.fullhd.adssdk:AdsPro:1.0.2'
 ```
 
 ```grovy
