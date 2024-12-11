@@ -48,14 +48,19 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../started/">Triển khai</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ad/adsdk/">AdsSDK</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../log-update/">Cập nhật version</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">AdsSDK</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/adsdk/">Hàm cấu hình AdsSDK</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Các loại ad</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../ad/admob-native/">Admob-Native</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/admob-native-collapsible/">Admob-Native-Collapsible</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ad/admob-banner/">Admob-Banner</a>
                   </li>
@@ -114,7 +119,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="cau-hinh-e-load-uoc-ad-that">Cấu hình để load được ad thật<a class="headerlink" href="#cau-hinh-e-load-uoc-ad-that" title="Permanent link">&para;</a></h1>
-<p>:pushpin: <strong>Để hiển thị được ad thật thì ứng dụng phải thoả mãi 2 điều kiện là isDebug = false và tên version phải hợp lệ  val regex = "^[0-9.]+$".toRegex()</strong></p>
+<p>:pushpin: <strong>Để hiển thị được ad thật thì ứng dụng phải thoả mãi 2 điều kiện là isDebug = false và tên version phải hợp lệ  val regex = "^[0-9.]+$".toRegex(), đồng thời version name chỉ dài 5, hoặc 6 kí tự</strong></p>
 <pre><code class="language-kotlin">    AdsSDK.init(
         application: Application,
         pathAssetConfigAds: String,

@@ -50,14 +50,19 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="started/">Triển khai</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="ad/adsdk/">AdsSDK</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="log-update/">Cập nhật version</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">AdsSDK</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="ad/adsdk/">Hàm cấu hình AdsSDK</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Các loại ad</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="ad/admob-native/">Admob-Native</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="ad/admob-native-collapsible/">Admob-Native-Collapsible</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="ad/admob-banner/">Admob-Banner</a>
                   </li>
@@ -114,10 +119,10 @@
               
                 <h1 id="thu-vien-ad-pro">Thư viện Ad-Pro<a class="headerlink" href="#thu-vien-ad-pro" title="Permanent link">&para;</a></h1>
 <p>Vui lòng luôn update phiên bản mới nhất</p>
-<pre><code>implementation 'com.android.fullhd.adssdk:AdsPro:1.0.2'
+<pre><code>implementation 'com.android.fullhd.adssdk:AdsPro:1.0.7'
 </code></pre>
 <pre><code class="language-grovy">maven{
-    url = &quot;http://repo.volio.vn/repository/maven-s3/&quot;
+    url = &quot;........&quot;
     allowInsecureProtocol = true   
 }
 </code></pre>
@@ -127,7 +132,7 @@
 <li>Cached các ad full màn hình theo 2 loại key chính [SpaceName, ID Ad]</li>
 <li>Chỉ định version app không load ad.</li>
 <li>Floating debug view hiển thị các trạng thái ad realtime.</li>
-<li>Chỉ load ad thật khi thoả mãn tên version app chỉ có [0-9,.] và debug = false.</li>
+<li>Chỉ load ad thật khi thoả mãn tên version app chỉ có [0-9,.], version name có độ dài là 5, 6 và debug = false.</li>
 <li>Timebetween cho các ad full màn hình,</li>
 <li>Time reload cho các ad view</li>
 </ul>
@@ -179,5 +184,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2024-11-27 08:28:03.825679+00:00
+Build Date UTC : 2024-12-11 07:56:13.507985+00:00
 -->
