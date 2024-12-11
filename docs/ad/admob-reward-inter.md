@@ -5,7 +5,7 @@ Với định dạng ad này quảng cáo load trước sẽ bị hết giá tr�
 
 ## **Hỗ trợ các định dạng**
 
-- reward
+- reward_interstitial
 
 ## **Hiển thị**
 

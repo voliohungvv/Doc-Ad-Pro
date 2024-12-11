@@ -1,20 +1,24 @@
-## AdmobNative
+## AdmobCollapsible
 
 ##  [Doc Admob](https://developers.google.com/admob/android/native?hl=vi)
 
 ## **Hỗ trợ các định dạng**
 
-- native
+- native_collapsible
 
 ## **Hiển thị**
 
-Hàm hiển thị một ad native ad lên một view cho trước
+Hàm hiển thị một ad native collapsible ad lên một view cho trước
 
 > **space:** Đây là tên của ad trong file config cần hiển thị .
 
 > **adContainer :** ViewGroup chứa ad .
 
-> **layoutRes** : Một reslayout chứa design của ad native theo ý muốn.
+> **layoutRes** : Một reslayout chứa design của ad native theo ý muốn (nhưng ở trạng thái collapse  ( đóng xuống)).
+
+> **collapsibleLayoutRes** : Một reslayout chứa design của ad native collapsible theo ý muốn (nhưng ở trạng thái expand  ( xổ lên)).
+
+> **lifecycle :** Đối với AdCollapsible thì cần truyền viewLifecycleOwner.lifecycle( đối với fragment ) với activity bạn phải tự xử lí chuyển màn đóng collapsible.
 
 > **layoutLoadingRes :** Một reslayout chứa view loading, null sẽ hiển thị layout loading mặc định.
 
@@ -23,10 +27,12 @@ Hàm hiển thị một ad native ad lên một view cho trước
 > **adCallback :**  Callback lại trạng thái ad .
 
 ```kotlin
-    AdmobNative.show(
+    AdmobNativeCollapsible.show(
         space: String,
         adContainer: ViewGroup,
+        lifecycle: Lifecycle,
         @LayoutRes layoutRes: Int,
+        @LayoutRes collapsibleLayoutRes: Int = R.layout.hd_ad_native_ads_large_collap_demo,
         @LayoutRes layoutLoadingRes: Int? = null,
         forceLoadNewAdIfShowed: Boolean = false,
         adCallback: AdCallback? = null,
@@ -42,12 +48,24 @@ Load trước ad để hiển thị ad nhanh hơn.
 > **forceLoadNew:** True thì sẽ  load mới ads bất kể ad mang trạng thái nào. False sẽ chỉ load mới khi ad hết hạn  hoặc ad mang trạng thái lỗi , không load đè lại khi đang có ad sẵn kể cả là đã show.
 
 ```kotlin
-    AdmobNative.load(
+    AdmobNativeCollapsible.load(
         space: String,  
         forceLoadNew: Boolean = false,  
         adCallback: AdCallback? = null
     )
 ```
+
+## **Đóng native thủ công**
+
+Đóng lại adnative đang sổ (Ad trạng thái expand -> collapse).
+
+> **space:** Đây là tên của ad trong file config cần hiển thị .
+
+
+```kotlin
+    AdmobNativeCollapsible.dismissCollapsible(space: String)
+```
+
 ## **Lấy trạng thái**
 
 Lấy trạng thái của ad hiện tại được chứa trong mapCached
@@ -55,7 +73,7 @@ Lấy trạng thái của ad hiện tại được chứa trong mapCached
 > **space:** Đây là tên của ad trong file config cần hiển thị .
 
 ```kotlin
-	AdmobNative.getStatusBySpace(space: String): AdStatus?
+	AdmobNativeCollapsible.getStatusBySpace(space: String): AdStatus?
 ```
 
 ## **Huỷ bỏ**
@@ -65,7 +83,7 @@ Huỷ bỏ một ad và xoá ad đó ra khỏi map cached
 > **space:** Đây là tên của ad trong file config cần hiển thị .
 
 ```kotlin
-	AdmobNative.destroyAdBySpace(space: String)
+	AdmobNativeCollapsible.destroyAdBySpace(space: String)
 ```
 
 ## **Thời gian giữa các lần load mới**

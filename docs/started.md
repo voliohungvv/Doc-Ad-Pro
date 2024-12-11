@@ -1,18 +1,18 @@
 # Bắt đầu
 
-**Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)**
+📌**Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)**
 ```
 implementation 'com.android.fullhd.adssdk:AdsPro:x.x.x'
 ```
 
 ```grovy
 maven{
-    url = "http://repo.volio.vn/repository/maven-s3/"
+    url = "........"
     allowInsecureProtocol = true   
 }
 ```
 
-**Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json**
+📌**Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json**
 ```json
 {
   "versionNameDisable": "dev_2.0.0",
@@ -74,6 +74,12 @@ maven{
       "status": true
     },
     {
+      "spaceName": "ADMOB_Native_collapsible",
+      "adsType": "native_collapsible",
+      "id": "ca-app-pub-3940256099942544/2247696110",
+      "status": true
+    },
+    {
       "spaceName": "ADMOB_Rewarded_Inter",
       "adsType": "reward_interstitial",
       "id": "ca-app-pub-3940256099942544/5354046379",
@@ -91,7 +97,7 @@ maven{
 
 ```
 
-**Bước 3:  Init AdSDK**
+📌**Bước 3:  Init AdSDK**
 
 ```kotlin
     AdsSDK.init(
@@ -100,18 +106,108 @@ maven{
         isDebug = BuildConfig.DEBUG
     )
         .setLogging(BuildConfig.DEBUG) 
-        .setIgnoreAdResume(MainActivityBanner1::class.java)
+        .setIgnoreAdResume(SplashActivity::class.java) // set các fragment,  activiy không show open ad
         .registerAdCallback(adsCallback)
         .setTimeForceLoadNewBanner(10_000)
         .setTimeForceLoadNewNative(10_000)
         .enableAppsflyer("key")// cần cấu hình thư viện IAP nếu crash
         .enableTiktokEvent(false)
-        .autoShowDebugView(BuildConfig.DEBUG, false) // show debug view chỉ nên bật khi test ad
+        .autoShowDebugView(false, false) // show debug view chỉ nên bật khi test ad
+        .loadAdsFromRemoteConfig(keyConfigAds = "ADMOB_V3", keyTimeBetweenAdInter = "timeBetweenMillisecond")
 ```
-📌 **Bước 4:  Triển khai CMP trước khi load các ad khác**
 
 ```kotlin
-    AdsSDK.showCMP(activity: AppCompatActivity, isTesting: Boolean = false, onDone: () -> Unit)
+private  val TAG = "LOG_ADS"
+private val adCallback = object : AdCallback {
+        override fun onAdStartLoading(adsModel: AdModel) {
+            super.onAdStartLoading(adsModel)
+            Log.e(TAG, "onAdStartLoading: ${adsModel}")
+        }
+
+        override fun onAdClicked(adsModel: AdModel) {
+            super.onAdClicked(adsModel)
+            Log.e(TAG, "onAdClicked: ${adsModel}")
+            toastDebug("click : ${adsModel.type} \n ${adsModel.id.takeLast(4)}")
+
+        }
+
+        override fun onAdClosed(adsModel: AdModel) {
+            super.onAdClosed(adsModel)
+            Log.e(TAG, "onAdClosed: ${adsModel}")
+        }
+
+        override fun onAdDismissedFullScreenContent(adsModel: AdModel) {
+            super.onAdDismissedFullScreenContent(adsModel)
+            Log.e(TAG, "onAdDismissedFullScreenContent: ${adsModel}")
+        }
+
+        override fun onAdShowedFullScreenContent(adsModel: AdModel) {
+            super.onAdShowedFullScreenContent(adsModel)
+            Log.e(TAG, "onAdShowedFullScreenContent: ${adsModel}")
+        }
+
+        override fun onAdFailedToShowFullScreenContent(
+            adsModel: AdModel,
+            error: AdSDKError?
+        ) {
+            super.onAdFailedToShowFullScreenContent(adsModel, error)
+            Log.e(TAG, "onAdFailedToShowFullScreenContent: ${adsModel} - ${error.toString()}")
+        }
+
+        override fun onAdFailedToLoad(adsModel: AdModel, error: AdSDKError?) {
+            super.onAdFailedToLoad(adsModel, error)
+            Log.e(TAG, "onAdFailedToLoad: ${adsModel} -  ${error.toString()}")
+        }
+
+        override fun onAdImpression(adsModel: AdModel) {
+            super.onAdImpression(adsModel)
+            Log.e(TAG, "onAdImpression: ${adsModel}")
+        }
+
+        override fun onAdLoaded(adsModel: AdModel) {
+            super.onAdLoaded(adsModel)
+            Log.e(TAG, "onAdLoaded: $adsModel")
+            toastDebug("loaded : ${adsModel.type} \n ${adsModel.id.takeLast(4)}")
+        }
+        
+
+        override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+            super.onAdPaidValueListener(adsModel, bundle)
+            Log.e(TAG, "onAdPaidValueListener: ${adsModel.spaceName}")
+        }
+
+        override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+            Log.e(TAG, "onAdOff: ${adsModel} -  ${error.toString()} ")
+        }
+
+    }
+
+    private fun toastDebug(text: CharSequence) {
+        if (BuildConfig.DEBUG) {
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+```
+
+📌 **Bước 4:  Triển khai CMP trước khi load các ad khác thường trước khi show ad splash**
+
+```kotlin
+    showCMP(activity: AppCompatActivity, isTesting: Boolean = false,timeoutMillis: Long = 10_000L, onDone: () -> Unit)
+```
+
+📌 **Bước 5:  Triển khai logic update version nếu cần sử dụng thường ở màn splash**
+
+```kotlin
+    AdsSDK.checkShowAppUpdate() // hàm bất đồng bộ chỉ cần gọi 
+```
+
+📌 **Bước 6:  Thêm ad ID ở trong thẻ  </application>**
+
+```xml
+     <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-................." />  
 ```
 
 📌 **Tham khảo dưới đây một vài loại ad**
@@ -195,6 +291,32 @@ fun BaseFragment<*, *>.showNative(
         adCallback = object : AdCallback {
             override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
                 Tracking.logPairValueNative(screenName, bundle)
+            }
+
+            override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+                adContainer.gone(true)
+            }
+
+        })
+}
+
+fun BaseFragment<*, *>.showNativeCollapsible(
+    space: String,
+    adContainer: ViewGroup,
+    @LayoutRes layoutRes: Int ,
+    @LayoutRes collapsibleLayoutRes: Int 
+) {
+    AdmobNativeCollapsible.show(
+        space = space,
+        adContainer = adContainer,
+        layoutLoadingRes = R.layout.layout_loading_ad_view_common,
+        forceLoadNewAdIfShowed = true,
+        layoutRes = layoutRes,
+        collapsibleLayoutRes = collapsibleLayoutRes,
+        lifecycle = viewLifecycleOwner.lifecycle,
+        adCallback = object : AdCallback {
+            override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+                Tracking.logPairValueBanner(screenName, bundle)
             }
 
             override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
@@ -377,6 +499,7 @@ fun BaseActivity<*>.showOpenSplashAction(
         })
 }
 
+// chỉ cần gọi duy nhất ở 1 lần trong app không cần preload hay gì khác nữa cả
 fun BaseActivity<*>.autoShowAdResume(space: String) {
     AdmobOpenResume.loadAndAutoShowIfAvailable(space, object : AdCallback {
         override fun onAdPaidValueListener(adModel: AdModel, bundle: Bundle) {

@@ -6,10 +6,12 @@ nav:
   - Trang chủ: index.md
   - Bắt đầu nhanh: 
     - Triển khai: started.md
-    - AdsSDK: ad/adsdk.md
     - Cập nhật version: log-update.md
+  - AdsSDK: 
+    - Hàm cấu hình AdsSDK: ad/adsdk.md
   - Các loại ad: 
     - Admob-Native: ad/admob-native.md
+    - Admob-Native-Collapsible: ad/admob-native-collapsible.md
     - Admob-Banner: ad/admob-banner.md
     - Admob-Inter: ad/admob-inter.md
     - Admob-Inter-Splash: ad/admob-inter-splash.md

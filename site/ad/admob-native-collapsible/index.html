@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Admob-Native - AdPro-HD</title>
+    <title>Admob-Native-Collapsible - AdPro-HD</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Admob-Native";
-        var mkdocs_page_input_path = "ad\\admob-native.md";
+        var mkdocs_page_name = "Admob-Native-Collapsible";
+        var mkdocs_page_input_path = "ad\\admob-native-collapsible.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -58,11 +58,11 @@
               </ul>
               <p class="caption"><span class="caption-text">Các loại ad</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Admob-Native</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../admob-native/">Admob-Native</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Admob-Native-Collapsible</a>
     <ul class="current">
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../admob-native-collapsible/">Admob-Native-Collapsible</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../admob-banner/">Admob-Banner</a>
                   </li>
@@ -109,7 +109,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
           <li class="breadcrumb-item">Các loại ad</li>
-      <li class="breadcrumb-item active">Admob-Native</li>
+      <li class="breadcrumb-item active">Admob-Native-Collapsible</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -118,26 +118,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="admobnative">AdmobNative<a class="headerlink" href="#admobnative" title="Permanent link">&para;</a></h2>
+                <h2 id="admobcollapsible">AdmobCollapsible<a class="headerlink" href="#admobcollapsible" title="Permanent link">&para;</a></h2>
 <h2 id="doc-admob"><a href="https://developers.google.com/admob/android/native?hl=vi">Doc Admob</a><a class="headerlink" href="#doc-admob" title="Permanent link">&para;</a></h2>
 <h2 id="ho-tro-cac-inh-dang"><strong>Hỗ trợ các định dạng</strong><a class="headerlink" href="#ho-tro-cac-inh-dang" title="Permanent link">&para;</a></h2>
 <ul>
-<li>native</li>
+<li>native_collapsible</li>
 </ul>
 <h2 id="hien-thi"><strong>Hiển thị</strong><a class="headerlink" href="#hien-thi" title="Permanent link">&para;</a></h2>
-<p>Hàm hiển thị một ad native ad lên một view cho trước</p>
+<p>Hàm hiển thị một ad native collapsible ad lên một view cho trước</p>
 <blockquote>
 <p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
 <p><strong>adContainer :</strong> ViewGroup chứa ad .</p>
-<p><strong>layoutRes</strong> : Một reslayout chứa design của ad native theo ý muốn.</p>
+<p><strong>layoutRes</strong> : Một reslayout chứa design của ad native theo ý muốn (nhưng ở trạng thái collapse  ( đóng xuống)).</p>
+<p><strong>collapsibleLayoutRes</strong> : Một reslayout chứa design của ad native collapsible theo ý muốn (nhưng ở trạng thái expand  ( xổ lên)).</p>
+<p><strong>lifecycle :</strong> Đối với AdCollapsible thì cần truyền viewLifecycleOwner.lifecycle( đối với fragment ) với activity bạn phải tự xử lí chuyển màn đóng collapsible.</p>
 <p><strong>layoutLoadingRes :</strong> Một reslayout chứa view loading, null sẽ hiển thị layout loading mặc định.</p>
 <p><strong>forceLoadNewAdIfShowed</strong>: Nếu true sẽ load ad mới  vào lần hiển thị tiếp theo mỗi khi ad trước hiển thị thành công, false sẽ hiển thị lại lại ad cũ và sẽ không load mới ad.</p>
 <p><strong>adCallback :</strong>  Callback lại trạng thái ad .</p>
 </blockquote>
-<pre><code class="language-kotlin">    AdmobNative.show(
+<pre><code class="language-kotlin">    AdmobNativeCollapsible.show(
         space: String,
         adContainer: ViewGroup,
+        lifecycle: Lifecycle,
         @LayoutRes layoutRes: Int,
+        @LayoutRes collapsibleLayoutRes: Int = R.layout.hd_ad_native_ads_large_collap_demo,
         @LayoutRes layoutLoadingRes: Int? = null,
         forceLoadNewAdIfShowed: Boolean = false,
         adCallback: AdCallback? = null,
@@ -149,25 +153,32 @@
 <p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
 <p><strong>forceLoadNew:</strong> True thì sẽ  load mới ads bất kể ad mang trạng thái nào. False sẽ chỉ load mới khi ad hết hạn  hoặc ad mang trạng thái lỗi , không load đè lại khi đang có ad sẵn kể cả là đã show.</p>
 </blockquote>
-<pre><code class="language-kotlin">    AdmobNative.load(
+<pre><code class="language-kotlin">    AdmobNativeCollapsible.load(
         space: String,  
         forceLoadNew: Boolean = false,  
         adCallback: AdCallback? = null
     )
+</code></pre>
+<h2 id="ong-native-thu-cong"><strong>Đóng native thủ công</strong><a class="headerlink" href="#ong-native-thu-cong" title="Permanent link">&para;</a></h2>
+<p>Đóng lại adnative đang sổ (Ad trạng thái expand -&gt; collapse).</p>
+<blockquote>
+<p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
+</blockquote>
+<pre><code class="language-kotlin">    AdmobNativeCollapsible.dismissCollapsible(space: String)
 </code></pre>
 <h2 id="lay-trang-thai"><strong>Lấy trạng thái</strong><a class="headerlink" href="#lay-trang-thai" title="Permanent link">&para;</a></h2>
 <p>Lấy trạng thái của ad hiện tại được chứa trong mapCached</p>
 <blockquote>
 <p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
 </blockquote>
-<pre><code class="language-kotlin">    AdmobNative.getStatusBySpace(space: String): AdStatus?
+<pre><code class="language-kotlin">    AdmobNativeCollapsible.getStatusBySpace(space: String): AdStatus?
 </code></pre>
 <h2 id="huy-bo"><strong>Huỷ bỏ</strong><a class="headerlink" href="#huy-bo" title="Permanent link">&para;</a></h2>
 <p>Huỷ bỏ một ad và xoá ad đó ra khỏi map cached</p>
 <blockquote>
 <p><strong>space:</strong> Đây là tên của ad trong file config cần hiển thị .</p>
 </blockquote>
-<pre><code class="language-kotlin">    AdmobNative.destroyAdBySpace(space: String)
+<pre><code class="language-kotlin">    AdmobNativeCollapsible.destroyAdBySpace(space: String)
 </code></pre>
 <h2 id="thoi-gian-giua-cac-lan-load-moi"><strong>Thời gian giữa các lần load mới</strong><a class="headerlink" href="#thoi-gian-giua-cac-lan-load-moi" title="Permanent link">&para;</a></h2>
 <p>Đối với hàm show sẽ hiển thị lại các ad cũ trước đó (nếu giá trị **forceLoadNewAdIfShowed ** = false). Nhưng thời gian hiển thị tiếp so với lần Ad Impression gần nhất  mà vượt quá giá trị này thì hàm show sẽ load mới ad.</p>
@@ -180,8 +191,8 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../adsdk/" class="btn btn-neutral float-left" title="Hàm cấu hình AdsSDK"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../admob-native-collapsible/" class="btn btn-neutral float-right" title="Admob-Native-Collapsible">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../admob-native/" class="btn btn-neutral float-left" title="Admob-Native"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../admob-banner/" class="btn btn-neutral float-right" title="Admob-Banner">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -204,10 +215,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../adsdk/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../admob-native/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../admob-native-collapsible/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../admob-banner/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

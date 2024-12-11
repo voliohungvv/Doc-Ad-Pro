@@ -50,14 +50,19 @@
     <ul class="current">
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../ad/adsdk/">AdsSDK</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../log-update/">Cập nhật version</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">AdsSDK</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/adsdk/">Hàm cấu hình AdsSDK</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Các loại ad</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../ad/admob-native/">Admob-Native</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ad/admob-native-collapsible/">Admob-Native-Collapsible</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../ad/admob-banner/">Admob-Banner</a>
                   </li>
@@ -114,15 +119,15 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="bat-au">Bắt đầu<a class="headerlink" href="#bat-au" title="Permanent link">&para;</a></h1>
-<p><strong>Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)</strong></p>
+<p>📌<strong>Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)</strong></p>
 <pre><code>implementation 'com.android.fullhd.adssdk:AdsPro:x.x.x'
 </code></pre>
 <pre><code class="language-grovy">maven{
-    url = &quot;http://repo.volio.vn/repository/maven-s3/&quot;
+    url = &quot;........&quot;
     allowInsecureProtocol = true   
 }
 </code></pre>
-<p><strong>Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json</strong></p>
+<p>📌<strong>Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json</strong></p>
 <pre><code class="language-json">{
   &quot;versionNameDisable&quot;: &quot;dev_2.0.0&quot;,
   &quot;listAds&quot;: [
@@ -183,6 +188,12 @@
       &quot;status&quot;: true
     },
     {
+      &quot;spaceName&quot;: &quot;ADMOB_Native_collapsible&quot;,
+      &quot;adsType&quot;: &quot;native_collapsible&quot;,
+      &quot;id&quot;: &quot;ca-app-pub-3940256099942544/2247696110&quot;,
+      &quot;status&quot;: true
+    },
+    {
       &quot;spaceName&quot;: &quot;ADMOB_Rewarded_Inter&quot;,
       &quot;adsType&quot;: &quot;reward_interstitial&quot;,
       &quot;id&quot;: &quot;ca-app-pub-3940256099942544/5354046379&quot;,
@@ -199,23 +210,104 @@
 }
 
 </code></pre>
-<p><strong>Bước 3:  Init AdSDK</strong></p>
+<p>📌<strong>Bước 3:  Init AdSDK</strong></p>
 <pre><code class="language-kotlin">    AdsSDK.init(
         application = this,
         pathAssetConfigAds = &quot;config.json&quot;,
         isDebug = BuildConfig.DEBUG
     )
         .setLogging(BuildConfig.DEBUG) 
-        .setIgnoreAdResume(MainActivityBanner1::class.java)
+        .setIgnoreAdResume(SplashActivity::class.java) // set các fragment,  activiy không show open ad
         .registerAdCallback(adsCallback)
         .setTimeForceLoadNewBanner(10_000)
         .setTimeForceLoadNewNative(10_000)
         .enableAppsflyer(&quot;key&quot;)// cần cấu hình thư viện IAP nếu crash
         .enableTiktokEvent(false)
-        .autoShowDebugView(BuildConfig.DEBUG, false) // show debug view chỉ nên bật khi test ad
+        .autoShowDebugView(false, false) // show debug view chỉ nên bật khi test ad
+        .loadAdsFromRemoteConfig(keyConfigAds = &quot;ADMOB_V3&quot;, keyTimeBetweenAdInter = &quot;timeBetweenMillisecond&quot;)
 </code></pre>
-<p>📌 <strong>Bước 4:  Triển khai CMP trước khi load các ad khác</strong></p>
-<pre><code class="language-kotlin">    AdsSDK.showCMP(activity: AppCompatActivity, isTesting: Boolean = false, onDone: () -&gt; Unit)
+<pre><code class="language-kotlin">private  val TAG = &quot;LOG_ADS&quot;
+private val adCallback = object : AdCallback {
+        override fun onAdStartLoading(adsModel: AdModel) {
+            super.onAdStartLoading(adsModel)
+            Log.e(TAG, &quot;onAdStartLoading: ${adsModel}&quot;)
+        }
+
+        override fun onAdClicked(adsModel: AdModel) {
+            super.onAdClicked(adsModel)
+            Log.e(TAG, &quot;onAdClicked: ${adsModel}&quot;)
+            toastDebug(&quot;click : ${adsModel.type} \n ${adsModel.id.takeLast(4)}&quot;)
+
+        }
+
+        override fun onAdClosed(adsModel: AdModel) {
+            super.onAdClosed(adsModel)
+            Log.e(TAG, &quot;onAdClosed: ${adsModel}&quot;)
+        }
+
+        override fun onAdDismissedFullScreenContent(adsModel: AdModel) {
+            super.onAdDismissedFullScreenContent(adsModel)
+            Log.e(TAG, &quot;onAdDismissedFullScreenContent: ${adsModel}&quot;)
+        }
+
+        override fun onAdShowedFullScreenContent(adsModel: AdModel) {
+            super.onAdShowedFullScreenContent(adsModel)
+            Log.e(TAG, &quot;onAdShowedFullScreenContent: ${adsModel}&quot;)
+        }
+
+        override fun onAdFailedToShowFullScreenContent(
+            adsModel: AdModel,
+            error: AdSDKError?
+        ) {
+            super.onAdFailedToShowFullScreenContent(adsModel, error)
+            Log.e(TAG, &quot;onAdFailedToShowFullScreenContent: ${adsModel} - ${error.toString()}&quot;)
+        }
+
+        override fun onAdFailedToLoad(adsModel: AdModel, error: AdSDKError?) {
+            super.onAdFailedToLoad(adsModel, error)
+            Log.e(TAG, &quot;onAdFailedToLoad: ${adsModel} -  ${error.toString()}&quot;)
+        }
+
+        override fun onAdImpression(adsModel: AdModel) {
+            super.onAdImpression(adsModel)
+            Log.e(TAG, &quot;onAdImpression: ${adsModel}&quot;)
+        }
+
+        override fun onAdLoaded(adsModel: AdModel) {
+            super.onAdLoaded(adsModel)
+            Log.e(TAG, &quot;onAdLoaded: $adsModel&quot;)
+            toastDebug(&quot;loaded : ${adsModel.type} \n ${adsModel.id.takeLast(4)}&quot;)
+        }
+
+
+        override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+            super.onAdPaidValueListener(adsModel, bundle)
+            Log.e(TAG, &quot;onAdPaidValueListener: ${adsModel.spaceName}&quot;)
+        }
+
+        override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+            Log.e(TAG, &quot;onAdOff: ${adsModel} -  ${error.toString()} &quot;)
+        }
+
+    }
+
+    private fun toastDebug(text: CharSequence) {
+        if (BuildConfig.DEBUG) {
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+</code></pre>
+<p>📌 <strong>Bước 4:  Triển khai CMP trước khi load các ad khác thường trước khi show ad splash</strong></p>
+<pre><code class="language-kotlin">    showCMP(activity: AppCompatActivity, isTesting: Boolean = false,timeoutMillis: Long = 10_000L, onDone: () -&gt; Unit)
+</code></pre>
+<p>📌 <strong>Bước 5:  Triển khai logic update version nếu cần sử dụng thường ở màn splash</strong></p>
+<pre><code class="language-kotlin">    AdsSDK.checkShowAppUpdate() // hàm bất đồng bộ chỉ cần gọi 
+</code></pre>
+<p>📌 <strong>Bước 6:  Thêm ad ID ở trong thẻ  </application></strong></p>
+<pre><code class="language-xml">     &lt;meta-data
+            android:name=&quot;com.google.android.gms.ads.APPLICATION_ID&quot;
+            android:value=&quot;ca-app-pub-.................&quot; /&gt;  
 </code></pre>
 <p>📌 <strong>Tham khảo dưới đây một vài loại ad</strong></p>
 <pre><code>  fun BaseFragment&lt;*, *&gt;.showBannerAdaptive(space: String, adContainer: ViewGroup, loadNew: Boolean = true) {
@@ -296,6 +388,32 @@ fun BaseFragment&lt;*, *&gt;.showNative(
         adCallback = object : AdCallback {
             override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
                 Tracking.logPairValueNative(screenName, bundle)
+            }
+
+            override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
+                adContainer.gone(true)
+            }
+
+        })
+}
+
+fun BaseFragment&lt;*, *&gt;.showNativeCollapsible(
+    space: String,
+    adContainer: ViewGroup,
+    @LayoutRes layoutRes: Int ,
+    @LayoutRes collapsibleLayoutRes: Int 
+) {
+    AdmobNativeCollapsible.show(
+        space = space,
+        adContainer = adContainer,
+        layoutLoadingRes = R.layout.layout_loading_ad_view_common,
+        forceLoadNewAdIfShowed = true,
+        layoutRes = layoutRes,
+        collapsibleLayoutRes = collapsibleLayoutRes,
+        lifecycle = viewLifecycleOwner.lifecycle,
+        adCallback = object : AdCallback {
+            override fun onAdPaidValueListener(adsModel: AdModel, bundle: Bundle) {
+                Tracking.logPairValueBanner(screenName, bundle)
             }
 
             override fun onAdOff(adsModel: AdModel, error: AdSDKError?) {
@@ -478,6 +596,7 @@ fun BaseActivity&lt;*&gt;.showOpenSplashAction(
         })
 }
 
+// chỉ cần gọi duy nhất ở 1 lần trong app không cần preload hay gì khác nữa cả
 fun BaseActivity&lt;*&gt;.autoShowAdResume(space: String) {
     AdmobOpenResume.loadAndAutoShowIfAvailable(space, object : AdCallback {
         override fun onAdPaidValueListener(adModel: AdModel, bundle: Bundle) {
@@ -497,7 +616,7 @@ fun BaseActivity&lt;*&gt;.autoShowAdResume(space: String) {
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href=".." class="btn btn-neutral float-left" title="Trang chủ"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../ad/adsdk/" class="btn btn-neutral float-right" title="AdsSDK">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../log-update/" class="btn btn-neutral float-right" title="Cập nhật version">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -523,7 +642,7 @@ fun BaseActivity&lt;*&gt;.autoShowAdResume(space: String) {
       <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../ad/adsdk/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../log-update/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
