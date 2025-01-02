@@ -99,6 +99,8 @@ maven{
 
 📌**Bước 3:  Init AdSDK**
 
+[Vui lòng bấm vào đọc kĩ "setTimeForceLoadNewNative(10_000)" dùng không thì bỏ qua](https://voliohungvv.github.io/Doc-Ad-Pro/ad/admob-native/#thoi-gian-giua-cac-lan-load-moi) 
+
 ```kotlin
     AdsSDK.init(
         application = this,
@@ -108,12 +110,13 @@ maven{
         .setLogging(BuildConfig.DEBUG) 
         .setIgnoreAdResume(SplashActivity::class.java) // set các fragment,  activiy không show open ad
         .registerAdCallback(adsCallback)
-        .setTimeForceLoadNewBanner(10_000)
-        .setTimeForceLoadNewNative(10_000)
         .enableAppsflyer("key")// cần cấu hình thư viện IAP nếu crash
         .enableTiktokEvent(false)
         .autoShowDebugView(false, false) // show debug view chỉ nên bật khi test ad
         .loadAdsFromRemoteConfig(keyConfigAds = "ADMOB_V3", keyTimeBetweenAdInter = "timeBetweenMillisecond")
+       // .setTimeForceLoadNewBanner(10_000) 
+       // .setTimeForceLoadNewNative(10_000)
+
 ```
 
 ```kotlin
