@@ -5,7 +5,8 @@ custom_dir: theme
 nav:
   - Trang chủ: index.md
   - Bắt đầu nhanh: 
-    - Triển khai: started.md
+    - Triển khai version dưới 1.1.1 (Không hỗ trợ trong tương lai): started_below_1.2.md
+    - Triển khai version từ 1.2.0: started_above_1.2.md
     - Cập nhật version: log-update.md
   - AdsSDK: 
     - Hàm cấu hình AdsSDK: ad/adsdk.md

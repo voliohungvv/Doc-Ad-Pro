@@ -1,8 +1,10 @@
 # Bắt đầu
 
+<span style="color: red;">Đây là hướng dẫn bản cuối (1.1.1) hỗ trợ dạng json format cũ bên dưới (không hỗ trợ nâng cấp trong tương lai). Trên bản 1.2.0 vui lòng đọc triển khai. [Cập nhật version](started_above_1.2.md)</span>.
+
 📌**Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)**
 ```
-implementation 'com.android.fullhd.adssdk:AdsPro:x.x.x'
+implementation 'com.android.fullhd.adssdk:AdsPro:1.1.1' 
 ```
 
 ```grovy

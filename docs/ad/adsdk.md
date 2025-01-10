@@ -100,7 +100,19 @@ Có thể thêm Fragment, Activity tương ứng để loại bỏ show open app
 
 ## **Đăng kí callback tổng lắng nghe mọi ad**
 
-Đăng kí mọi trạng thái , callback của ad trong sdk. **Callback này luôn gọi trước callback riêng lẻ của các hàm khác**
+Đăng kí mọi trạng thái , callback của admob trong sdk gốc của google. **Callback này luôn gọi trước callback riêng lẻ của các hàm khác**
+
+<span style="color: red;">Chú ý các hàm callback được đặt tên theo đúng callback của ad "tương đương" và bạn cần phải nắm được sơ qua về các callback ads trong SDK gốc của google.</span>
+
+Ví dụ
+
+- Hàm onAdOff: sẽ trả về các lỗi mà thư viện xử lí và bỏ qua show ads (ví dụ mất mạng, space lỗi..). Đây làm hàm cần xử lí ẩn ads view, chuyển màn ads full màn hình nếu cần thiết.
+
+- Hàm onAdStartLoading: Đây là hàm sẽ bắt đầu load một ads sau khi đã validate. có thể tham khảo để hiện loading ads full màn hình ở đây.
+
+- Hàm onAdDismissedFullScreenContent chỉ có ở ads full màn hình do vậy nếu bạn dùng ad view (native, banner) thì callback này sẽ không bao giờ được gọi. (<span style="color: red;">Chú ý ở trên</span>)
+
+- Các hàm khác sẽ tương ứng với các ads trong sdk gốc của google.
 
 ```kotlin
 	AdsSDK.registerAdCallback(callback: AdCallback): AdsSDK

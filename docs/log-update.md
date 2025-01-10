@@ -3,6 +3,39 @@
 - Đối với các phiên bản hỗ trợ ktx dưới 1.8. Không có ghi log lại mà dựa vào tên version chính.
 Ví dụ phiên bản **1.0.9-ktx-support-below-1.8** thì tương ứng logic với bản **1.0.9** chính
 
+
+## Version 1.2.0 (Big update)
+- Sửa thư viện hỗ trợ high floor. 
+- Hỗ trợ 2 định dạng json format. V3 kiểu cũ, V4 kiểu mới
+- Thay đổi hàm callback
+
+
+- <span style="color: red;">Thêm trường id:</span> Đây là id được thao tác trong list id của adsModel. <span style="color: red;">Một vài logic phải chú ý</span> ví dụ như hàm onStartLoading sẽ phải là id đứng đầu. Nhưng thư viện có thể load failed các id đầu và callback về các id thành công phía sau dẫn tới ID loading và ID onLoaded khác nhau.
+
+
+- callback mới: 
+```kotlin 
+override fun onAdImpression(adsModel: AdModel, id: String) {
+            super.onAdImpression(adsModel, id)
+            Log.e(TAG, "onAdImpression: ${adsModel.spaceName} _ ${adsModel.id} |")
+        }
+```
+
+- callback cũ: 
+```kotlin 
+override fun onAdImpression(adsModel: AdModel) {
+            super.onAdImpression(adsModel)
+            Log.e(TAG, "onAdImpression: ${adsModel.spaceName} _ ${id} |")
+        }
+```
+
+## Version 1.1.1
+-  Hạ cấp appfly về bản cũ trước đó : Sửa lỗi sau 
+```
+No virtual method sendAdRevenue(Landroid/content/Context;Ljava/util/Map;)V in class Lcom/appsflyer/AppsFlyerLib; or its super classes (declaration of 'com.appsflyer.AppsFlyerLib' appears in /data/app/~~SWEPUGEQbTMBNVW8AaHpZw==/
+
+```
+
 ## Version 1.1.0
 -  Thêm record exception vào các hàm của appflyer . Thử fix lỗi crash sau
 
