@@ -46,7 +46,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Bắt đầu nhanh</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../started/">Triển khai</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../started_below_1.2/">Triển khai version dưới 1.1.1 (Không hỗ trợ trong tương lai)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../started_above_1.2/">Triển khai version từ 1.2.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../log-update/">Cập nhật version</a>
                   </li>
@@ -211,7 +213,23 @@
 <pre><code class="language-kotlin">    AdsSDK.setIgnoreAdResume(vararg clazz: Class&lt;*&gt;): AdsSDK
 </code></pre>
 <h2 id="ang-ki-callback-tong-lang-nghe-moi-ad"><strong>Đăng kí callback tổng lắng nghe mọi ad</strong><a class="headerlink" href="#ang-ki-callback-tong-lang-nghe-moi-ad" title="Permanent link">&para;</a></h2>
-<p>Đăng kí mọi trạng thái , callback của ad trong sdk. <strong>Callback này luôn gọi trước callback riêng lẻ của các hàm khác</strong></p>
+<p>Đăng kí mọi trạng thái , callback của admob trong sdk gốc của google. <strong>Callback này luôn gọi trước callback riêng lẻ của các hàm khác</strong></p>
+<p><span style="color: red;">Chú ý các hàm callback được đặt tên theo đúng callback của ad "tương đương" và bạn cần phải nắm được sơ qua về các callback ads trong SDK gốc của google.</span></p>
+<p>Ví dụ</p>
+<ul>
+<li>
+<p>Hàm onAdOff: sẽ trả về các lỗi mà thư viện xử lí và bỏ qua show ads (ví dụ mất mạng, space lỗi..). Đây làm hàm cần xử lí ẩn ads view, chuyển màn ads full màn hình nếu cần thiết.</p>
+</li>
+<li>
+<p>Hàm onAdStartLoading: Đây là hàm sẽ bắt đầu load một ads sau khi đã validate. có thể tham khảo để hiện loading ads full màn hình ở đây.</p>
+</li>
+<li>
+<p>Hàm onAdDismissedFullScreenContent chỉ có ở ads full màn hình do vậy nếu bạn dùng ad view (native, banner) thì callback này sẽ không bao giờ được gọi. (<span style="color: red;">Chú ý ở trên</span>)</p>
+</li>
+<li>
+<p>Các hàm khác sẽ tương ứng với các ads trong sdk gốc của google.</p>
+</li>
+</ul>
 <pre><code class="language-kotlin">    AdsSDK.registerAdCallback(callback: AdCallback): AdsSDK
     AdsSDK.unregisterAdCallback(callback: AdCallback): AdsSDK
 </code></pre>

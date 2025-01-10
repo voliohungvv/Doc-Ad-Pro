@@ -48,7 +48,9 @@
               </ul>
               <p class="caption"><span class="caption-text">Bắt đầu nhanh</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="started/">Triển khai</a>
+                  <li class="toctree-l1"><a class="reference internal" href="started_below_1.2/">Triển khai version dưới 1.1.1 (Không hỗ trợ trong tương lai)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="started_above_1.2/">Triển khai version từ 1.2.0</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="log-update/">Cập nhật version</a>
                   </li>
@@ -118,8 +120,9 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="thu-vien-ad-pro">Thư viện Ad-Pro<a class="headerlink" href="#thu-vien-ad-pro" title="Permanent link">&para;</a></h1>
+<p>Các thông tin fix lỗi, tính năng, thay đổi hàm, logic mới nhất ở đây <a href="log-update/">Cập nhật version</a> . Nên đọc để nắm được tổng quan</p>
 <p>Vui lòng luôn update phiên bản mới nhất</p>
-<pre><code>implementation 'com.android.fullhd.adssdk:AdsPro:1.1.0' // cũng chưa chắc phải mới nhất :)
+<pre><code>implementation 'com.android.fullhd.adssdk:AdsPro:1.2.0' // cũng chưa chắc phải mới nhất :) 
 </code></pre>
 <p>Với phiên bản hỗ trợ ktx dưới 1.8</p>
 <pre><code>implementation 'com.android.fullhd.adssdk:AdsPro:1.0.9-ktx-support-below-1.8' // cũng chưa chắc phải mới nhất :)
@@ -129,6 +132,11 @@
     allowInsecureProtocol = true   
 }
 </code></pre>
+<p><span style="color: red;">Note: Thư viện dần triển khai và hỗ trợ dạng high floor. Bản 1.1.1 sẽ là bản cuối cùng ổn định và không có high floor. Từ bạn tiếp theo 1.2.0 bản buộc phải update lại file json ads trên cả "remote" và dưới "ứng dụng" </span>.</p>
+<ul>
+<li>Nếu dùng từ 1.1.1 trở xuống <a href="started_below_1.2/">Triển khai nhanh</a></li>
+<li>Nếu dùng từ 1.2.0 trở lên   <a href="started_above_1.2/">Triển khai nhanh</a></li>
+</ul>
 <h1 id="cac-tinh-nang-ho-tro-chinh">Các tính năng hỗ trợ chính<a class="headerlink" href="#cac-tinh-nang-ho-tro-chinh" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Custom layout loading cho tất cả các loại Ad</li>
@@ -143,7 +151,7 @@
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="started/" class="btn btn-neutral float-right" title="Triển khai">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="started_below_1.2/" class="btn btn-neutral float-right" title="Triển khai version dưới 1.1.1 (Không hỗ trợ trong tương lai)">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -167,7 +175,7 @@
     
     
     
-      <span><a href="started/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="started_below_1.2/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
@@ -187,5 +195,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-01-02 03:18:25.988462+00:00
+Build Date UTC : 2025-01-10 05:27:05.022132+00:00
 -->

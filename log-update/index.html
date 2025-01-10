@@ -46,10 +46,16 @@
               </ul>
               <p class="caption"><span class="caption-text">Bắt đầu nhanh</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../started/">Triển khai</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../started_below_1.2/">Triển khai version dưới 1.1.1 (Không hỗ trợ trong tương lai)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../started_above_1.2/">Triển khai version từ 1.2.0</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Cập nhật version</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#version-120-big-update">Version 1.2.0 (Big update)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#version-111">Version 1.1.1</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#version-110">Version 1.1.0</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#version-109">Version 1.0.9</a>
@@ -144,6 +150,40 @@
 <li>Đối với các phiên bản hỗ trợ ktx dưới 1.8. Không có ghi log lại mà dựa vào tên version chính.
 Ví dụ phiên bản <strong>1.0.9-ktx-support-below-1.8</strong> thì tương ứng logic với bản <strong>1.0.9</strong> chính</li>
 </ul>
+<h2 id="version-120-big-update">Version 1.2.0 (Big update)<a class="headerlink" href="#version-120-big-update" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Sửa thư viện hỗ trợ high floor. </li>
+<li>Hỗ trợ 2 định dạng json format. V3 kiểu cũ, V4 kiểu mới</li>
+<li>
+<p>Thay đổi hàm callback</p>
+</li>
+<li>
+<p><span style="color: red;">Thêm trường id:</span> Đây là id được thao tác trong list id của adsModel. <span style="color: red;">Một vài logic phải chú ý</span> ví dụ như hàm onStartLoading sẽ phải là id đứng đầu. Nhưng thư viện có thể load failed các id đầu và callback về các id thành công phía sau dẫn tới ID loading và ID onLoaded khác nhau.</p>
+</li>
+<li>
+<p>callback mới: </p>
+</li>
+</ul>
+<pre><code class="language-kotlin">override fun onAdImpression(adsModel: AdModel, id: String) {
+            super.onAdImpression(adsModel, id)
+            Log.e(TAG, &quot;onAdImpression: ${adsModel.spaceName} _ ${adsModel.id} |&quot;)
+        }
+</code></pre>
+<ul>
+<li>callback cũ: </li>
+</ul>
+<pre><code class="language-kotlin">override fun onAdImpression(adsModel: AdModel) {
+            super.onAdImpression(adsModel)
+            Log.e(TAG, &quot;onAdImpression: ${adsModel.spaceName} _ ${id} |&quot;)
+        }
+</code></pre>
+<h2 id="version-111">Version 1.1.1<a class="headerlink" href="#version-111" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Hạ cấp appfly về bản cũ trước đó : Sửa lỗi sau </li>
+</ul>
+<pre><code>No virtual method sendAdRevenue(Landroid/content/Context;Ljava/util/Map;)V in class Lcom/appsflyer/AppsFlyerLib; or its super classes (declaration of 'com.appsflyer.AppsFlyerLib' appears in /data/app/~~SWEPUGEQbTMBNVW8AaHpZw==/
+
+</code></pre>
 <h2 id="version-110">Version 1.1.0<a class="headerlink" href="#version-110" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Thêm record exception vào các hàm của appflyer . Thử fix lỗi crash sau</li>
@@ -219,7 +259,7 @@ Ví dụ phiên bản <strong>1.0.9-ktx-support-below-1.8</strong> thì tương 
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../started/" class="btn btn-neutral float-left" title="Triển khai"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../started_above_1.2/" class="btn btn-neutral float-left" title="Triển khai version từ 1.2.0"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../ad/adsdk/" class="btn btn-neutral float-right" title="Hàm cấu hình AdsSDK">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -243,7 +283,7 @@ Ví dụ phiên bản <strong>1.0.9-ktx-support-below-1.8</strong> thì tương 
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../started/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../started_above_1.2/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../ad/adsdk/" style="color: #fcfcfc">Next &raquo;</a></span>
