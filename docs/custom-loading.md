@@ -5,7 +5,7 @@
 Với định dạng các loại ad view như AdNative, AdBanner thì các view loading sẽ được truyền dưới dạng reslayout, Nếu null sẽ sử dụng layout loading mặc định của thư viện. Áp dụng này sẽ có tác dụng với mỗi lần gọi hàm
 
 
-:pushpin: **Hàm mẫu**
+📌 **Hàm mẫu**
 
 ```kotlin
     AdmobNative.show(
@@ -23,7 +23,7 @@ Với định dạng các loại ad view như AdNative, AdBanner thì các view 
 Với định dạng các loại ad full screen như AdInter, AdReward thì các view loading sẽ là dialog. Bạn có thể ghi đè layout mặc định hoặc thậm chí là truyền cả layout mà bạn muốn và cấu hình dialog hiển thị. Áp dụng sẽ tác động lên toàn bộ lớp Ad đó.
 
 
-:pushpin: **Hàm mẫu**
+📌 **Hàm mẫu**
 
 ```kotlin
     AdmobInter.setDialogConfigurator(

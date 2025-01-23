@@ -2,7 +2,7 @@
 
 Debug view sẽ hiển thị dưới dạng một floating button chạy service và cần có quyền **SYSTEM_ALERT_WINDOW**. Tính năng này đang được phát triển và đã có thể thử nghiệm.
 
-:pushpin: **Một vài tính năng thử nghiệm**
+📌 **Một vài tính năng thử nghiệm**
 
 - Thêm nút mở ad inspector của admob thay vì lắc.
 - Xem các thông số isPremium, TimebetweenInter, versionNameDisable, Class IgnoreAdResume ...

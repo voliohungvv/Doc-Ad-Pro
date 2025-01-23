@@ -4,7 +4,7 @@
 
 <span style="color: gray;">Nếu bạn nâng cấp từ các bản 1.1.x lên thì cần thay json file config, callback. Các hàm khác vẫn giữ nguyên param</span>.
 
-📌**Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)**
+## **Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)**
 ```
 implementation 'com.android.fullhd.adssdk:AdsPro:x.x.x'
 ```
@@ -16,7 +16,7 @@ maven{
 }
 ```
 
-📌**Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json**
+## **Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json**
 
 - Hỗ trợ 2 định dạng json format v4 và v3 khuyến khích chọn V4 cho các app mới.
 
@@ -291,7 +291,7 @@ Format kiểu cũ V3:
 
 ```
 
-📌**Bước 3:  Init AdSDK**
+## **Bước 3:  Init AdSDK**
 
 [Vui lòng bấm đây vào đọc kĩ "setTimeForceLoadNewNative(10_000)" dùng không thì bỏ qua](https://voliohungvv.github.io/Doc-Ad-Pro/ad/admob-native/#thoi-gian-giua-cac-lan-load-moi) 
 
@@ -403,19 +403,19 @@ private val adCallback = object : AdCallback {
 
 ```
 
-📌 **Bước 4:  Triển khai CMP trước khi load các ad khác thường trước khi show ad splash**
+##  **Bước 4:  Triển khai CMP trước khi load các ad khác thường trước khi show ad splash**
 
 ```kotlin
     showCMP(activity: AppCompatActivity, isTesting: Boolean = false,timeoutMillis: Long = 10_000L, onDone: () -> Unit)
 ```
 
-📌 **Bước 5:  Triển khai logic update version nếu cần sử dụng thường ở màn splash**
+##  **Bước 5:  Triển khai logic update version nếu cần sử dụng thường ở màn splash**
 
 ```kotlin
     AdsSDK.checkShowAppUpdate() // hàm bất đồng bộ chỉ cần gọi 
 ```
 
-📌 **Bước 6:  Thêm ad ID ở trong thẻ  </application>**
+##  **Bước 6:  Thêm ad ID ở trong thẻ  </application>**
 
 ```xml
      <meta-data
@@ -423,7 +423,7 @@ private val adCallback = object : AdCallback {
             android:value="ca-app-pub-................." />  
 ```
 
-📌 **Tham khảo dưới đây một vài loại ad**
+##  **Tham khảo dưới đây một vài loại ad**
 
 ```kotlin
 private const val TAG = "AdUtils"

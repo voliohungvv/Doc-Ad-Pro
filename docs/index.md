@@ -1,4 +1,4 @@
-# Thư viện Ad-Pro
+## Tổng quan thư viện Ad-Pro
 
 Các thông tin fix lỗi, tính năng, thay đổi hàm, logic mới nhất ở đây [Cập nhật version](log-update.md) . Nên đọc để nắm được tổng quan
 
@@ -24,7 +24,7 @@ maven{
 - Nếu dùng từ 1.1.1 trở xuống [Triển khai nhanh](started_below_1.2.md)
 - Nếu dùng từ 1.2.0 trở lên   [Triển khai nhanh](started_above_1.2.md)
 
-# Các tính năng hỗ trợ chính
+## Các tính năng hỗ trợ chính
 - Custom layout loading cho tất cả các loại Ad
 - Cached các ad full màn hình theo 2 loại key chính [SpaceName, ID Ad]
 - Chỉ định version app không load ad.

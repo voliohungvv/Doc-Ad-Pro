@@ -2,7 +2,7 @@
 - Các thay đổi update qua các version sẽ hiện ở đây từ mới nhất đến thấp nhất. chỉ ghi lại log của các phiển bản chính. 
 - Đối với các phiên bản hỗ trợ ktx dưới 1.8. Không có ghi log lại mà dựa vào tên version chính.
 Ví dụ phiên bản **1.0.9-ktx-support-below-1.8** thì tương ứng logic với bản **1.0.9** chính
-
+-  [Xem version mới nhất](#version-raw)
 
 ## Version 1.2.0 (Big update)
 - Sửa thư viện hỗ trợ high floor. 
@@ -99,3 +99,8 @@ No virtual method sendAdRevenue(Landroid/content/Context;Ljava/util/Map;)V in cl
 ## Version 1.0.1
 -  Fix lỗi ad native và ad banner load thừa trên dialog gây giảm show rate.
 -  Fix lỗi timeout CMP tự động chuyển khi hết thời gian -> Chỉ timeout khi form CMP chưa hiện. Nếu hiện rồi thì huỷ timeout
+
+## Version Raw
+Các version dưới đang sắp xếp theo dạng thô và cách nhau bằng dấu cách " ". Phiên bản mới nhất là sau chữ <span style="color: red;">com.android.fullhd.adssdk AdsPro</span>.
+<iframe src="https://repo.volio.vn/repository/maven-s3/com/android/fullhd/adssdk/AdsPro/maven-metadata.xml" width="100%" height="100px"></iframe>
+

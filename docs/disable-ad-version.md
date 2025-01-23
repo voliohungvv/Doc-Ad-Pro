@@ -1,6 +1,6 @@
 # Cấu hình tắt ad theo version chỉ định
 
-:pushpin: **Cấu hình thông qua biến versionNameDisable**
+📌 **Cấu hình thông qua biến versionNameDisable**
 
 Tắt các version chỉ định thông qua versionNameDisable trong file config.
 

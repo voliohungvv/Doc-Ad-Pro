@@ -2,7 +2,7 @@
 
 <span style="color: red;">Đây là hướng dẫn bản cuối (1.1.1) hỗ trợ dạng json format cũ bên dưới (không hỗ trợ nâng cấp trong tương lai). Trên bản 1.2.0 vui lòng đọc triển khai. [Cập nhật version](started_above_1.2.md)</span>.
 
-📌**Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)**
+## **Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)**
 ```
 implementation 'com.android.fullhd.adssdk:AdsPro:1.1.1' 
 ```
@@ -14,7 +14,7 @@ maven{
 }
 ```
 
-📌**Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json**
+## **Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json**
 ```json
 {
   "versionNameDisable": "dev_2.0.0",
@@ -99,7 +99,7 @@ maven{
 
 ```
 
-📌**Bước 3:  Init AdSDK**
+## **Bước 3:  Init AdSDK**
 
 [Vui lòng bấm vào đọc kĩ "setTimeForceLoadNewNative(10_000)" dùng không thì bỏ qua](https://voliohungvv.github.io/Doc-Ad-Pro/ad/admob-native/#thoi-gian-giua-cac-lan-load-moi) 
 
@@ -195,19 +195,19 @@ private val adCallback = object : AdCallback {
 
 ```
 
-📌 **Bước 4:  Triển khai CMP trước khi load các ad khác thường trước khi show ad splash**
+##  **Bước 4:  Triển khai CMP trước khi load các ad khác thường trước khi show ad splash**
 
 ```kotlin
     showCMP(activity: AppCompatActivity, isTesting: Boolean = false,timeoutMillis: Long = 10_000L, onDone: () -> Unit)
 ```
 
-📌 **Bước 5:  Triển khai logic update version nếu cần sử dụng thường ở màn splash**
+##  **Bước 5:  Triển khai logic update version nếu cần sử dụng thường ở màn splash**
 
 ```kotlin
     AdsSDK.checkShowAppUpdate() // hàm bất đồng bộ chỉ cần gọi 
 ```
 
-📌 **Bước 6:  Thêm ad ID ở trong thẻ  </application>**
+##  **Bước 6:  Thêm ad ID ở trong thẻ  </application>**
 
 ```xml
      <meta-data
@@ -215,7 +215,7 @@ private val adCallback = object : AdCallback {
             android:value="ca-app-pub-................." />  
 ```
 
-📌 **Tham khảo dưới đây một vài loại ad**
+##  **Tham khảo dưới đây một vài loại ad**
 
 ```
   fun BaseFragment<*, *>.showBannerAdaptive(space: String, adContainer: ViewGroup, loadNew: Boolean = true) {

@@ -1,6 +1,6 @@
 # Cấu hình để load được ad thật 
 
-:pushpin: **Để hiển thị được ad thật thì ứng dụng phải thoả mãi 2 điều kiện là isDebug = false và tên version phải hợp lệ  val regex = "^[0-9.]+$".toRegex(), đồng thời version name chỉ dài 5, hoặc 6 kí tự**
+📌 **Để hiển thị được ad thật thì ứng dụng phải thoả mãi 2 điều kiện là isDebug = false và tên version phải hợp lệ  val regex = "^[0-9.]+$".toRegex(), đồng thời version name chỉ dài 5, hoặc 6 kí tự**
 
 ```kotlin
     AdsSDK.init(
