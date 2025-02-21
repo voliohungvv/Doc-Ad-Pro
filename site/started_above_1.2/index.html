@@ -317,6 +317,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#tool-chuyen-oi-json-format-tu-111-12x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool chuyển đổi json format từ 1.1.1 -&gt; 1.2.x
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-chuyen-oi-json-format-tu-v3-v4-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool chuyển đổi json format từ V3 -&gt; V4 mới
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buoc-1-implement-thu-vien-xem-ver-moi-nhat-o-au-page" class="md-nav__link">
     <span class="md-ellipsis">
       Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)
@@ -905,6 +923,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#tool-chuyen-oi-json-format-tu-111-12x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool chuyển đổi json format từ 1.1.1 -&gt; 1.2.x
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-chuyen-oi-json-format-tu-v3-v4-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool chuyển đổi json format từ V3 -&gt; V4 mới
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#buoc-1-implement-thu-vien-xem-ver-moi-nhat-o-au-page" class="md-nav__link">
     <span class="md-ellipsis">
       Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)
@@ -985,6 +1021,8 @@
 <h1 id="bat-au">Bắt đầu<a class="headerlink" href="#bat-au" title="Permanent link">&para;</a></h1>
 <p><span style="color: red;">Đây là hướng dẫn phiên bản từ 1.2.0 trở lên</span>.</p>
 <p><span style="color: gray;">Nếu bạn nâng cấp từ các bản 1.1.x lên thì cần thay json file config, callback. Các hàm khác vẫn giữ nguyên param</span>.</p>
+<h2 id="tool-chuyen-oi-json-format-tu-111-12x"><a href="https://drive.google.com/drive/folders/11dVXoAq8WtXmF0MP3R9thjWshgI3brUd?usp=sharing">Tool chuyển đổi json format từ 1.1.1 -&gt; 1.2.x</a><a class="headerlink" href="#tool-chuyen-oi-json-format-tu-111-12x" title="Permanent link">&para;</a></h2>
+<h2 id="tool-chuyen-oi-json-format-tu-v3-v4-moi"><a href="https://drive.google.com/drive/folders/11dVXoAq8WtXmF0MP3R9thjWshgI3brUd?usp=sharing">Tool chuyển đổi json format từ V3 -&gt; V4 mới</a><a class="headerlink" href="#tool-chuyen-oi-json-format-tu-v3-v4-moi" title="Permanent link">&para;</a></h2>
 <h2 id="buoc-1-implement-thu-vien-xem-ver-moi-nhat-o-au-page"><strong>Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)</strong><a class="headerlink" href="#buoc-1-implement-thu-vien-xem-ver-moi-nhat-o-au-page" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>implementation &#39;com.android.fullhd.adssdk:AdsPro:x.x.x&#39;
 </span></code></pre></div>
@@ -995,9 +1033,9 @@
 </span></code></pre></div>
 <h2 id="buoc-2-tao-file-cau-hinh-ad-tinh-duoi-app-trong-thu-muc-appsrcmainassetsconfigjson"><strong>Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json</strong><a class="headerlink" href="#buoc-2-tao-file-cau-hinh-ad-tinh-duoi-app-trong-thu-muc-appsrcmainassetsconfigjson" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Hỗ trợ 2 định dạng json format v4 và v3 khuyến khích chọn V4 cho các app mới.</li>
-</ul>
-<p>Format kiểu mới V4:
+<li>Hỗ trợ 2 định dạng json format v4 và v3 khuyến khích chọn V4 cho các app mới.
+<span style="color: gray;">Nếu có json v3 hoặc json của version ads dưới 1.1.1 thì dùng tool trên chuyển đổi</span>.
+Format kiểu mới V4:
 <div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;versionNameDisable&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dev_2.0.0&quot;</span><span class="p">,</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;listAds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1140,8 +1178,9 @@
 </span><span id="__span-2-140"><a id="__codelineno-2-140" name="__codelineno-2-140" href="#__codelineno-2-140"></a><span class="w">    </span><span class="p">]</span>
 </span><span id="__span-2-141"><a id="__codelineno-2-141" name="__codelineno-2-141" href="#__codelineno-2-141"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-2-142"><a id="__codelineno-2-142" name="__codelineno-2-142" href="#__codelineno-2-142"></a><span class="p">}</span>
-</span></code></pre></div></p>
-<p>Format kiểu cũ V3:
+</span></code></pre></div></li>
+</ul>
+<p>Format kiểu cũ V3: 
 <div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;versionNameDisable&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dev_2.0.0&quot;</span><span class="p">,</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&quot;listAds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>

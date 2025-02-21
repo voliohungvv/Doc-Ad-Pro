@@ -338,6 +338,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-122" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-121" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-120-big-update" class="md-nav__link">
     <span class="md-ellipsis">
       Version 1.2.0 (Big update)
@@ -959,6 +977,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-122" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-121" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-120-big-update" class="md-nav__link">
     <span class="md-ellipsis">
       Version 1.2.0 (Big update)
@@ -1097,6 +1133,54 @@
 Ví dụ phiên bản <strong>1.0.9-ktx-support-below-1.8</strong> thì tương ứng logic với bản <strong>1.0.9</strong> chính</li>
 <li><a href="#version-raw">Xem version mới nhất</a></li>
 </ul>
+<h2 id="version-122">Version 1.2.2<a class="headerlink" href="#version-122" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[Update] Thêm hàm tắt các ad full màn hình. Hoặc activity</li>
+</ul>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">//Lấy toàn bộ activity còn sống trong process dành cho bạn tự xử lí</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">fun</span><span class="w"> </span><span class="n">AdsSDK</span><span class="p">.</span><span class="nf">getCurrentListActivityInProcess</span><span class="p">():</span><span class="w"> </span><span class="n">MutableSet</span><span class="o">&lt;</span><span class="n">Activity</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">// finish toàn bộ activit trong process. Vì không phân biệt được các mediation có các ad activiy nào</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">// do vậy bạn cần truyền vào Activity của chính bạn. VD MainActivity vào except để loại trừ bị finish.</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kd">fun</span><span class="w"> </span><span class="n">AdsSDK</span><span class="p">.</span><span class="nf">destroyAllActivityInProcess</span><span class="p">(</span><span class="k">vararg</span><span class="w"> </span><span class="n">except</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="o">&lt;*&gt;</span><span class="p">){</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="version-121">Version 1.2.1<a class="headerlink" href="#version-121" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[Lỗi] missing ads inter lần thứ 2 sau khi tắt mạng liên tục ( tần suất xảy ra thấp . chỉ khi chuyền màn liên tục). </li>
+<li>[Lí do] bởi vì callback onAdDismiss gọi chậm hơn hàm load nên ad đã bị gắn thành null tại callback onAdShowFullScreenContent.</li>
+<li>
+<p>[Sửa] Sửa thành chỉ khi ad đã show thì mới gắn lại ad = null khi show full onAdShowFullScreenContent</p>
+</li>
+<li>
+<p>[Update] Sửa init appsflyer dưới background giảm thiểu tình trạng ARN. </p>
+</li>
+<li>
+<p>fun enableAppsflyer(appsflyerId: String, initInBackgroundThread: Boolean = true): AdsSDK</p>
+</li>
+<li>
+<p>[Update] <span style="color: red;">Loại bỏ mọi thư viện ad mediation giảm thiểu size app. Từ bây giờ cần gắn mediation cần implement ở tầng app</span>.</p>
+</li>
+<li>Dưới dây là các version tương thích với bản 1.2.1</li>
+<li>[Chú ý]: Vì không còn mediation nên nếu bị ad full màn hình đè (ad resume). Thì phải thêm class vào  hàm dưới cho module ads check
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">setClazzAdFullScreenOfMediation</span><span class="p">(</span><span class="k">vararg</span><span class="w"> </span><span class="n">clazz</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="o">&lt;*&gt;</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">clearSetClazzAdFullScreenOfMediation</span><span class="p">()</span><span class="w"> </span>
+</span></code></pre></div></li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>   api &#39;com.google.ads.mediation:facebook:6.17.0.0&#39;
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>   api &#39;com.google.ads.mediation:adcolony:4.8.0.2&#39;
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>   api &#39;com.google.ads.mediation:applovin:12.5.0.1&#39;
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>   api &#39;com.google.ads.mediation:vungle:7.4.0.0&#39;
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>   api &#39;com.google.ads.mediation:pangle:6.0.0.8.0&#39;
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>   api &#39;com.google.ads.mediation:mintegral:16.7.81.0&#39;
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>   api(&#39;com.facebook.android:facebook-android-sdk:latest.release&#39;) {
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>       exclude group: &#39;com.google.zxing&#39;
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>   }
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>   api(&quot;com.unity3d.ads:unity-ads:4.9.2&quot;)
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>   api(&quot;com.google.ads.mediation:unity:4.9.2.0&quot;)
+</span></code></pre></div>
 <h2 id="version-120-big-update">Version 1.2.0 (Big update)<a class="headerlink" href="#version-120-big-update" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Sửa thư viện hỗ trợ high floor. </li>
@@ -1109,58 +1193,58 @@ Ví dụ phiên bản <strong>1.0.9-ktx-support-below-1.8</strong> thì tương 
 </li>
 <li>
 <p>callback mới: 
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">:</span><span class="w"> </span><span class="n">AdModel</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">            </span><span class="k">super</span><span class="p">.</span><span class="na">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">)</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">            </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onAdImpression: </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">spaceName</span><span class="si">}</span><span class="s"> _ </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">id</span><span class="si">}</span><span class="s"> |&quot;</span><span class="p">)</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="p">}</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">:</span><span class="w"> </span><span class="n">AdModel</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">            </span><span class="k">super</span><span class="p">.</span><span class="na">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">            </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onAdImpression: </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">spaceName</span><span class="si">}</span><span class="s"> _ </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">id</span><span class="si">}</span><span class="s"> |&quot;</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="p">}</span>
 </span></code></pre></div></p>
 </li>
 <li>
 <p>callback cũ: 
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">:</span><span class="w"> </span><span class="n">AdModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">            </span><span class="k">super</span><span class="p">.</span><span class="na">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">)</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">            </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onAdImpression: </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">spaceName</span><span class="si">}</span><span class="s"> _ </span><span class="si">${</span><span class="n">id</span><span class="si">}</span><span class="s"> |&quot;</span><span class="p">)</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="p">}</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">:</span><span class="w"> </span><span class="n">AdModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">            </span><span class="k">super</span><span class="p">.</span><span class="na">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">            </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onAdImpression: </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">spaceName</span><span class="si">}</span><span class="s"> _ </span><span class="si">${</span><span class="n">id</span><span class="si">}</span><span class="s"> |&quot;</span><span class="p">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="p">}</span>
 </span></code></pre></div></p>
 </li>
 </ul>
 <h2 id="version-111">Version 1.1.1<a class="headerlink" href="#version-111" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Hạ cấp appfly về bản cũ trước đó : Sửa lỗi sau 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>No virtual method sendAdRevenue(Landroid/content/Context;Ljava/util/Map;)V in class Lcom/appsflyer/AppsFlyerLib; or its super classes (declaration of &#39;com.appsflyer.AppsFlyerLib&#39; appears in /data/app/~~SWEPUGEQbTMBNVW8AaHpZw==/
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>No virtual method sendAdRevenue(Landroid/content/Context;Ljava/util/Map;)V in class Lcom/appsflyer/AppsFlyerLib; or its super classes (declaration of &#39;com.appsflyer.AppsFlyerLib&#39; appears in /data/app/~~SWEPUGEQbTMBNVW8AaHpZw==/
 </span></code></pre></div></li>
 </ul>
 <h2 id="version-110">Version 1.1.0<a class="headerlink" href="#version-110" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Thêm record exception vào các hàm của appflyer . Thử fix lỗi crash sau</li>
 </ul>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a> Fatal Exception: java.lang.IllegalArgumentException: key [und_aaland] in alias:language contains unsupported fields combination.
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>       at android.icu.util.ULocale$AliasReplacer.loadAliasData(ULocale.java:1294)
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>       at android.icu.util.ULocale$AliasReplacer.replace(ULocale.java:1184)
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>       at android.icu.util.ULocale.canonicalize(ULocale.java:1680)
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>       at android.icu.util.ULocale.createCanonical(ULocale.java:443)
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>       at android.icu.impl.CalendarUtil.getCalendarType(CalendarUtil.java:52)
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>       at android.icu.util.Calendar.getCalendarTypeForLocale(Calendar.java:1716)
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>       at android.icu.util.Calendar.createInstance(Calendar.java:1731)
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>       at android.icu.util.Calendar.getInstanceInternal(Calendar.java:1701)
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>       at android.icu.util.Calendar.getInstance(Calendar.java:1656)
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>       at libcore.icu.LocaleData.initializeCalendarData(LocaleData.java:252)
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>       at libcore.icu.LocaleData.initLocaleData(LocaleData.java:217)
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>       at libcore.icu.LocaleData.get(LocaleData.java:195)
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>       at java.util.Calendar.setWeekCountData(Calendar.java:3387)
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>       at java.util.Calendar.&lt;init&gt;(Calendar.java:1612)
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>       at java.util.GregorianCalendar.&lt;init&gt;(GregorianCalendar.java:627)
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>       at java.util.Calendar.createCalendar(Calendar.java:1684)
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>       at java.util.Calendar.getInstance(Calendar.java:1652)
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>       at java.text.SimpleDateFormat.initializeCalendar(SimpleDateFormat.java:758)
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>       at java.text.SimpleDateFormat.&lt;init&gt;(SimpleDateFormat.java:702)
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>       at com.appsflyer.internal.AFb1rSDK.valueOf(SourceFile:61)
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>       at com.appsflyer.internal.AFb1tSDK.AFInAppEventParameterName(:57)
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>       at com.appsflyer.internal.AFa1dSDK$AFa1xSDK.AFInAppEventType(SourceFile:2575)
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>       at com.appsflyer.internal.AFd1tSDK$1.run(:221)
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>       at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
-</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>       at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
-</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>       at java.lang.Thread.run(Thread.java:1012)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a> Fatal Exception: java.lang.IllegalArgumentException: key [und_aaland] in alias:language contains unsupported fields combination.
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>       at android.icu.util.ULocale$AliasReplacer.loadAliasData(ULocale.java:1294)
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>       at android.icu.util.ULocale$AliasReplacer.replace(ULocale.java:1184)
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>       at android.icu.util.ULocale.canonicalize(ULocale.java:1680)
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>       at android.icu.util.ULocale.createCanonical(ULocale.java:443)
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>       at android.icu.impl.CalendarUtil.getCalendarType(CalendarUtil.java:52)
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>       at android.icu.util.Calendar.getCalendarTypeForLocale(Calendar.java:1716)
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>       at android.icu.util.Calendar.createInstance(Calendar.java:1731)
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>       at android.icu.util.Calendar.getInstanceInternal(Calendar.java:1701)
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>       at android.icu.util.Calendar.getInstance(Calendar.java:1656)
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>       at libcore.icu.LocaleData.initializeCalendarData(LocaleData.java:252)
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>       at libcore.icu.LocaleData.initLocaleData(LocaleData.java:217)
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>       at libcore.icu.LocaleData.get(LocaleData.java:195)
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>       at java.util.Calendar.setWeekCountData(Calendar.java:3387)
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>       at java.util.Calendar.&lt;init&gt;(Calendar.java:1612)
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>       at java.util.GregorianCalendar.&lt;init&gt;(GregorianCalendar.java:627)
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>       at java.util.Calendar.createCalendar(Calendar.java:1684)
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>       at java.util.Calendar.getInstance(Calendar.java:1652)
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>       at java.text.SimpleDateFormat.initializeCalendar(SimpleDateFormat.java:758)
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>       at java.text.SimpleDateFormat.&lt;init&gt;(SimpleDateFormat.java:702)
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>       at com.appsflyer.internal.AFb1rSDK.valueOf(SourceFile:61)
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>       at com.appsflyer.internal.AFb1tSDK.AFInAppEventParameterName(:57)
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>       at com.appsflyer.internal.AFa1dSDK$AFa1xSDK.AFInAppEventType(SourceFile:2575)
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>       at com.appsflyer.internal.AFd1tSDK$1.run(:221)
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>       at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>       at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+</span><span id="__span-6-27"><a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>       at java.lang.Thread.run(Thread.java:1012)
 </span></code></pre></div>
 <h2 id="version-109">Version 1.0.9<a class="headerlink" href="#version-109" title="Permanent link">&para;</a></h2>
 <ul>

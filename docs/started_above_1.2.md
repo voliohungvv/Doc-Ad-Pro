@@ -4,6 +4,9 @@
 
 <span style="color: gray;">Nếu bạn nâng cấp từ các bản 1.1.x lên thì cần thay json file config, callback. Các hàm khác vẫn giữ nguyên param</span>.
 
+##  [Tool chuyển đổi json format từ 1.1.1 -> 1.2.x](https://drive.google.com/drive/folders/11dVXoAq8WtXmF0MP3R9thjWshgI3brUd?usp=sharing)
+##  [Tool chuyển đổi json format từ V3 -> V4 mới](https://drive.google.com/drive/folders/11dVXoAq8WtXmF0MP3R9thjWshgI3brUd?usp=sharing)
+
 ## **Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)**
 ```
 implementation 'com.android.fullhd.adssdk:AdsPro:x.x.x'
@@ -19,7 +22,7 @@ maven{
 ## **Bước 2:  Tạo file cấu hình ad tĩnh dưới app trong thư mục app/src/main/assets/config.json**
 
 - Hỗ trợ 2 định dạng json format v4 và v3 khuyến khích chọn V4 cho các app mới.
-
+<span style="color: gray;">Nếu có json v3 hoặc json của version ads dưới 1.1.1 thì dùng tool trên chuyển đổi</span>.
 Format kiểu mới V4:
 ```json
 {
@@ -169,7 +172,7 @@ Format kiểu mới V4:
 
 ```
 
-Format kiểu cũ V3:
+Format kiểu cũ V3: 
 ```json
 {
   "versionNameDisable": "dev_2.0.0",

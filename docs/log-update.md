@@ -4,6 +4,56 @@
 Ví dụ phiên bản **1.0.9-ktx-support-below-1.8** thì tương ứng logic với bản **1.0.9** chính
 -  [Xem version mới nhất](#version-raw)
 
+## Version 1.2.2
+- [Update] Thêm hàm tắt các ad full màn hình. Hoặc activity
+
+```kotlin
+
+//Lấy toàn bộ activity còn sống trong process dành cho bạn tự xử lí
+fun AdsSDK.getCurrentListActivityInProcess(): MutableSet<Activity> {
+}
+
+// finish toàn bộ activit trong process. Vì không phân biệt được các mediation có các ad activiy nào
+// do vậy bạn cần truyền vào Activity của chính bạn. VD MainActivity vào except để loại trừ bị finish.
+fun AdsSDK.destroyAllActivityInProcess(vararg except: Class<*>){
+}
+
+```
+
+## Version 1.2.1 
+- [Lỗi] missing ads inter lần thứ 2 sau khi tắt mạng liên tục ( tần suất xảy ra thấp . chỉ khi chuyền màn liên tục). 
+- [Lí do] bởi vì callback onAdDismiss gọi chậm hơn hàm load nên ad đã bị gắn thành null tại callback onAdShowFullScreenContent.
+- [Sửa] Sửa thành chỉ khi ad đã show thì mới gắn lại ad = null khi show full onAdShowFullScreenContent
+
+- [Update] Sửa init appsflyer dưới background giảm thiểu tình trạng ARN. 
+- fun enableAppsflyer(appsflyerId: String, initInBackgroundThread: Boolean = true): AdsSDK
+
+- [Update] <span style="color: red;">Loại bỏ mọi thư viện ad mediation giảm thiểu size app. Từ bây giờ cần gắn mediation cần implement ở tầng app</span>.
+- Dưới dây là các version tương thích với bản 1.2.1
+- [Chú ý]: Vì không còn mediation nên nếu bị ad full màn hình đè (ad resume). Thì phải thêm class vào  hàm dưới cho module ads check
+```kotlin
+
+fun setClazzAdFullScreenOfMediation(vararg clazz: Class<*>)
+
+fun clearSetClazzAdFullScreenOfMediation() 
+```
+
+```gradle
+
+   api 'com.google.ads.mediation:facebook:6.17.0.0'
+   api 'com.google.ads.mediation:adcolony:4.8.0.2'
+   api 'com.google.ads.mediation:applovin:12.5.0.1'
+   api 'com.google.ads.mediation:vungle:7.4.0.0'
+   api 'com.google.ads.mediation:pangle:6.0.0.8.0'
+   api 'com.google.ads.mediation:mintegral:16.7.81.0'
+   api('com.facebook.android:facebook-android-sdk:latest.release') {
+       exclude group: 'com.google.zxing'
+   }
+   api("com.unity3d.ads:unity-ads:4.9.2")
+   api("com.google.ads.mediation:unity:4.9.2.0")
+
+```
+
 ## Version 1.2.0 (Big update)
 - Sửa thư viện hỗ trợ high floor. 
 - Hỗ trợ 2 định dạng json format. V3 kiểu cũ, V4 kiểu mới
