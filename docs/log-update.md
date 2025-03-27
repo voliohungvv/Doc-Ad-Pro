@@ -4,6 +4,48 @@
 Ví dụ phiên bản **1.0.9-ktx-support-below-1.8** thì tương ứng logic với bản **1.0.9** chính
 -  [Xem version mới nhất](#version-raw)
 
+## Version 1.2.5
+- [Update] đưa Firebase.initialize(application) vào trong background.
+- [Lỗi] Sửa lỗi popup windown not attach to windown tại collapsible native. Khi chuyển màn quá nhanh hoặc có thể xảy ra khi dùng dialogBottomSheetFragment
+- [Lí do] Bởi vì viewGroup đang chưa được attachToWindow nên popupWindow.showAsDropDown(viewGroup,...) đang bị lỗi
+- [Sửa] Kiểm tra view attachToWindow & inflatter xong trước khi show
+```
+    Fatal Exception: java.lang.IllegalArgumentException
+    View=android.widget.PopupWindow$PopupDecorView{a7f95b1 V.E...... R.....I. 0,0-0,0} not attached to window manager
+    android.view.WindowManagerGlobal.findViewLocked (WindowManagerGlobal.java:576)
+    android.view.WindowManagerGlobal.updateViewLayout (WindowManagerGlobal.java:465)
+    android.view.WindowManagerImpl.updateViewLayout (WindowManagerImpl.java:170)
+    android.widget.PopupWindow.update (PopupWindow.java:2230)
+    android.widget.PopupWindow.update (PopupWindow.java:2351)
+    android.widget.PopupWindow.alignToAnchor (PopupWindow.java:2521)
+    android.widget.PopupWindow.-$$Nest$malignToAnchor
+    android.widget.PopupWindow$1.onViewAttachedToWindow (PopupWindow.java:245)
+    android.view.View.dispatchAttachedToWindow (View.java:22080)
+```
+
+## Version 1.2.4
+- [Update] Mở publish hàm fun dismissCollapsible(space: String) chủ động đóng collapsible native
+```kotlin
+    fun dismissCollapsible(space: String): PopupWindow? 
+```
+
+## Version 1.2.3
+- [Update] Thêm blur media image ở native sử dụng bằng biến **blurMediaImage: Boolean**
+```kotlin
+    fun show(
+        space: String,
+        adContainer: ViewGroup,
+        lifecycle: Lifecycle?,
+        @LayoutRes layoutRes: Int,
+        @LayoutRes collapsibleLayoutRes: Int = R.layout.hd_ad_native_ads_large_collap_demo,
+        @LayoutRes layoutLoadingRes: Int? = null,
+        forceLoadNewAdIfShowed: Boolean = false,
+        blurMediaImage: Boolean = false,
+        adCallback: AdCallback? = null,
+    )
+
+```
+
 ## Version 1.2.2
 - [Update] Thêm hàm tắt các ad full màn hình. Hoặc activity
 
