@@ -26,15 +26,18 @@ Hàm hiển thị một ad native collapsible ad lên một view cho trước
 
 > **adCallback :**  Callback lại trạng thái ad .
 
+> **blurMediaImage :**  Tạo blurmedia đằng sau . phải thêm một  ImageView vào có id = iv_blur vào sau ad_media. có kích thước tương ứng
 ```kotlin
-    AdmobNativeCollapsible.show(
+    fun show(
         space: String,
         adContainer: ViewGroup,
-        lifecycle: Lifecycle,
+        lifecycle: Lifecycle?,
         @LayoutRes layoutRes: Int,
         @LayoutRes collapsibleLayoutRes: Int = R.layout.hd_ad_native_ads_large_collap_demo,
         @LayoutRes layoutLoadingRes: Int? = null,
         forceLoadNewAdIfShowed: Boolean = false,
+        blurMediaImage: Boolean = false,
+        isFakeClose: Boolean  = false,
         adCallback: AdCallback? = null,
     )
 ```

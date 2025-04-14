@@ -4,6 +4,62 @@
 Ví dụ phiên bản **1.0.9-ktx-support-below-1.8** thì tương ứng logic với bản **1.0.9** chính
 -  [Xem version mới nhất](#version-raw)
 
+## Version 1.2.8
+- [Update]Mở ra một số các hàm để tracking ad V3 dựa vào 2 hàm **Admob{Type}.getMapAdLoader()** và **Admob{Type}.getKeyCached(space: String)** để truy cập sâu các thuộc
+tính của lớp AdLoader<T>
+- [Update] Sửa validate json thrown ra dễ hiểu hơn. Khi file json ad sai
+
+```kotlin
+    Admob{Type}.getMapAdLoader() // cung cấp map cached theo idCached ( chú ý ad full màn đang cached theo id, adview cached theo space)
+    Admob{Type}.getKeyCached(space: String) // dùng hàm này để lấy key cached dùng cho hàm trên truyền vào là space
+    GDPRUtils.canShowAd // true  là user bấm consent, false là user bấm do not consent
+    GDPRUtils.isGDPR(applicationContext: Context)// true là trong danh sách cần xin consent, false không trong danh sách consent
+```
+
+## Version 1.2.7
+- Thêm logic control CTR native collapsible . Dùng biến isFakeClose: nếu true click ad, false sẽ hoạt động bình thường.
+```kotlin
+
+    AdmobNativeCollapsible.show(
+        space: String,
+        adContainer: ViewGroup,
+        lifecycle: Lifecycle?,
+        @LayoutRes layoutRes: Int,
+        @LayoutRes collapsibleLayoutRes: Int = R.layout.hd_ad_native_ads_large_collap_demo,
+        @LayoutRes layoutLoadingRes: Int? = null,
+        forceLoadNewAdIfShowed: Boolean = false,
+        blurMediaImage: Boolean = false,
+        isFakeClose: Boolean  = false,
+        adCallback: AdCallback? = null,
+    )
+```
+
+## Version 1.2.6
+- Để tối ưu appstart time một vài đội yêu cầu lazy init AdsSDK trong activity do vậy . Sửa logic isAutoRegisterActivityAndProcess biến này chịu trách nhiệm
+tự động đăng kí activity ứng dụng để show ad full màn hình. Nếu bạn Lazy AdsSDK.init thì bản phải tự đăng kí 2 hàm dưới trong application để tránh lỗi không có activity show ad.
+- Đăng kí registerProcessLifeOwner và registerActivityLifecycle trong application và lazy AdsSDK.init
+
+- [Lỗi liên quan] Nếu bạn AdsSDK.init sau khi activity chính của bạn khởi động mà không đăng kí registerProcessLifeOwner và registerActivityLifecycle từ sớm. Sẽ không có acitivty nào được lưu lại và hỗ trợ show ad full màn hình. Ở versio cũ hơn sẽ không xuất hiện callback
+- [Sửa] Tách registerProcessLifeOwner và registerActivityLifecycle chủ động đăng kí. Thêm callback onAdOff nếu không có activity tránh kẹt logic chuyển màn.
+```kotlin
+    AdsSDK.init(
+        application: Application,
+        pathAssetConfigAds: String,
+        isDebug: Boolean = false,
+        isAutoRegisterActivityAndProcess: Boolean = true,
+        onSuccess: () -> Unit = {}
+    ):
+
+
+    AdsSDK.registerProcessLifeOwner()  \\ đăng kí process để show appresume
+    AdsSDK.registerActivityLifecycle(application: Application) \\ đăng kí activity để show add full màn hình
+
+    \\ nếu không thể đăng kí hoặc lí do bất khả kháng hãy cẩn trọng sử dụng thêm và xoá acitity chính của bạn thông qua hàm này
+    AdsSDK.addCurrentToListActivityInProcess(activity: Activity) 
+    AdsSDK.getCurrentListActivityInProcess(): MutableSet<Activity>
+    AdsSDK.removeActivityInProcess(activity: Activity)
+}
+```
 ## Version 1.2.5
 - [Update] đưa Firebase.initialize(application) vào trong background.
 - [Lỗi] Sửa lỗi popup windown not attach to windown tại collapsible native. Khi chuyển màn quá nhanh hoặc có thể xảy ra khi dùng dialogBottomSheetFragment
@@ -31,6 +87,7 @@ Ví dụ phiên bản **1.0.9-ktx-support-below-1.8** thì tương ứng logic v
 
 ## Version 1.2.3
 - [Update] Thêm blur media image ở native sử dụng bằng biến **blurMediaImage: Boolean**
+Tạo blurmedia đằng sau . phải thêm một  ImageView vào có id = iv_blur vào sau ad_media. có kích thước tương ứng
 ```kotlin
     fun show(
         space: String,

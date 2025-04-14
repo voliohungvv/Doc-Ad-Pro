@@ -4,8 +4,7 @@
 
 <span style="color: gray;">Nếu bạn nâng cấp từ các bản 1.1.x lên thì cần thay json file config, callback. Các hàm khác vẫn giữ nguyên param</span>.
 
-##  [Tool chuyển đổi json format từ 1.1.1 -> 1.2.x](https://drive.google.com/drive/folders/11dVXoAq8WtXmF0MP3R9thjWshgI3brUd?usp=sharing)
-##  [Tool chuyển đổi json format từ V3 -> V4 mới](https://drive.google.com/drive/folders/11dVXoAq8WtXmF0MP3R9thjWshgI3brUd?usp=sharing)
+##  [Tool chuyển đổi json format, export json ... ](https://drive.google.com/drive/folders/1P7HglFxnaO1J3YcnrbT9XaijNZYlf4ne)
 
 ## **Bước 1: Implement thư viện (xem ver mới nhất ở đầu page)**
 ```
