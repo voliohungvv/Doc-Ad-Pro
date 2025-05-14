@@ -6,7 +6,7 @@ Các thông tin fix lỗi, tính năng, thay đổi hàm, logic mới nhất ở
 
 Vui lòng luôn update phiên bản mới nhất
 ```
-implementation 'com.android.fullhd.adssdk:AdsPro:1.2.8' // cũng chưa chắc phải mới nhất :) 
+implementation 'com.android.fullhd.adssdk:AdsPro:1.2.11' // cũng chưa chắc phải mới nhất :) 
 ```
 
 Với phiên bản hỗ trợ ktx dưới 1.8
@@ -17,7 +17,6 @@ implementation 'com.android.fullhd.adssdk:AdsPro:1.0.9-ktx-support-below-1.8' //
 ```grovy
 maven{
     url = "........"
-    allowInsecureProtocol = true   
 }
 ```
 

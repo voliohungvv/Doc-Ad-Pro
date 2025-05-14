@@ -1,8 +1,34 @@
 # Thay đổi các version
 - Các thay đổi update qua các version sẽ hiện ở đây từ mới nhất đến thấp nhất. chỉ ghi lại log của các phiển bản chính. 
-- Đối với các phiên bản hỗ trợ ktx dưới 1.8. Không có ghi log lại mà dựa vào tên version chính.
-Ví dụ phiên bản **1.0.9-ktx-support-below-1.8** thì tương ứng logic với bản **1.0.9** chính
+- Đối với các phiên bản hỗ trợ ktx dưới 1.8, và các phiêu bản mới 1.3.x. Không có ghi log lại mà dựa vào tên version chính.
+- Đối với version 1.2.11 đang sử dụng admob 23.2.0 mọi logic sẽ tương ứng với version 1.3.1 sử dụng admob 24.0.0
+- Ví dụ phiên bản **1.0.9-ktx-support-below-1.8** thì tương ứng logic với bản **1.0.9** chính
 -  [Xem version mới nhất](#version-raw)
+
+
+## Version 1.2.11 | 1.3.1
+- [Update] - Thêm loading navite collapsible ở dạng kích thước expand. **autoShowLoadingLarge: Boolean = false**
+- [Update] - Thêm debug view riêng của đội HDTeam một vài các tính năng hay dùng khác **{Trigger button, iap inspector, ad inspector, app setting ..}**
+- [Fix]- Sửa lỗi khi adview đã vào trạng thái loading thì show mà không check premium nữa. -> Sửa bằng việc thêm logic check **{permium, network, remote config}** trước khi show.
+```kotlin
+    fun show(
+        space: String,
+        adContainer: ViewGroup,
+        lifecycle: Lifecycle?,
+        @LayoutRes layoutRes: Int,
+        @LayoutRes collapsibleLayoutRes: Int = R.layout.hd_ad_native_ads_large_collap_demo,
+        @LayoutRes layoutLoadingRes: Int? = null,
+        forceLoadNewAdIfShowed: Boolean = false,
+        blurMediaImage: Boolean = false,
+        isFakeClose: Boolean = false,
+        autoShowLoadingLarge: Boolean = false, // update
+        adCallback: AdCallback? = null,
+    )
+```
+
+## Version 1.2.9 | 1.2.10
+- [Update] - Nâng cấp GDPR experiment lên phiên bản com.google.android.ump:user-messaging-platform:3.2.0
+- Vì CD/CD lỗi cached version lên phiển bản 1.2.10 và phiên bản 1.2.9 là giống nhau. 
 
 ## Version 1.2.8
 - [Update]Mở ra một số các hàm để tracking ad V3 dựa vào 2 hàm **Admob{Type}.getMapAdLoader()** và **Admob{Type}.getKeyCached(space: String)** để truy cập sâu các thuộc

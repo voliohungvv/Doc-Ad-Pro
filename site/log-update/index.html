@@ -12,7 +12,7 @@
         <link rel="prev" href="../started_above_1.2/">
       
       
-        <link rel="next" href="../ad/adsdk/">
+        <link rel="next" href="../log-mediation/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -338,6 +338,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-1211-131" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2.11 | 1.3.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-129-1210" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2.9 | 1.2.10
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-128" class="md-nav__link">
     <span class="md-ellipsis">
       Version 1.2.8
@@ -530,6 +548,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log-mediation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cập nhật mediation
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1031,6 +1070,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#version-1211-131" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2.11 | 1.3.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-129-1210" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.2.9 | 1.2.10
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#version-128" class="md-nav__link">
     <span class="md-ellipsis">
       Version 1.2.8
@@ -1237,9 +1294,35 @@
 <h1 id="thay-oi-cac-version">Thay đổi các version<a class="headerlink" href="#thay-oi-cac-version" title="Permanent link">&para;</a></h1>
 <ul>
 <li>Các thay đổi update qua các version sẽ hiện ở đây từ mới nhất đến thấp nhất. chỉ ghi lại log của các phiển bản chính. </li>
-<li>Đối với các phiên bản hỗ trợ ktx dưới 1.8. Không có ghi log lại mà dựa vào tên version chính.
-Ví dụ phiên bản <strong>1.0.9-ktx-support-below-1.8</strong> thì tương ứng logic với bản <strong>1.0.9</strong> chính</li>
+<li>Đối với các phiên bản hỗ trợ ktx dưới 1.8, và các phiêu bản mới 1.3.x. Không có ghi log lại mà dựa vào tên version chính.</li>
+<li>Đối với version 1.2.11 đang sử dụng admob 23.2.0 mọi logic sẽ tương ứng với version 1.3.1 sử dụng admob 24.0.0</li>
+<li>Ví dụ phiên bản <strong>1.0.9-ktx-support-below-1.8</strong> thì tương ứng logic với bản <strong>1.0.9</strong> chính</li>
 <li><a href="#version-raw">Xem version mới nhất</a></li>
+</ul>
+<h2 id="version-1211-131">Version 1.2.11 | 1.3.1<a class="headerlink" href="#version-1211-131" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[Update] - Thêm loading navite collapsible ở dạng kích thước expand. <strong>autoShowLoadingLarge: Boolean = false</strong></li>
+<li>[Update] - Thêm debug view riêng của đội HDTeam một vài các tính năng hay dùng khác <strong>{Trigger button, iap inspector, ad inspector, app setting ..}</strong></li>
+<li>[Fix]- Sửa lỗi khi adview đã vào trạng thái loading thì show mà không check premium nữa. -&gt; Sửa bằng việc thêm logic check <strong>{permium, network, remote config}</strong> trước khi show.
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">        </span><span class="n">space</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="n">adContainer</span><span class="p">:</span><span class="w"> </span><span class="n">ViewGroup</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="n">lifecycle</span><span class="p">:</span><span class="w"> </span><span class="n">Lifecycle?,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">layoutRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">collapsibleLayoutRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">hd_ad_native_ads_large_collap_demo</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">layoutLoadingRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="n">forceLoadNewAdIfShowed</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="n">blurMediaImage</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="n">isFakeClose</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">autoShowLoadingLarge</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="c1">// update</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="n">adCallback</span><span class="p">:</span><span class="w"> </span><span class="n">AdCallback? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="p">)</span>
+</span></code></pre></div></li>
+</ul>
+<h2 id="version-129-1210">Version 1.2.9 | 1.2.10<a class="headerlink" href="#version-129-1210" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[Update] - Nâng cấp GDPR experiment lên phiên bản com.google.android.ump:user-messaging-platform:3.2.0</li>
+<li>Vì CD/CD lỗi cached version lên phiển bản 1.2.10 và phiên bản 1.2.9 là giống nhau. </li>
 </ul>
 <h2 id="version-128">Version 1.2.8<a class="headerlink" href="#version-128" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1247,26 +1330,26 @@ Ví dụ phiên bản <strong>1.0.9-ktx-support-below-1.8</strong> thì tương 
 tính của lớp AdLoader<T></li>
 <li>[Update] Sửa validate json thrown ra dễ hiểu hơn. Khi file json ad sai</li>
 </ul>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="n">Admob</span><span class="p">{</span><span class="n">Type</span><span class="p">}.</span><span class="na">getMapAdLoader</span><span class="p">()</span><span class="w"> </span><span class="c1">// cung cấp map cached theo idCached ( chú ý ad full màn đang cached theo id, adview cached theo space)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Admob</span><span class="p">{</span><span class="n">Type</span><span class="p">}.</span><span class="na">getKeyCached</span><span class="p">(</span><span class="n">space</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="c1">// dùng hàm này để lấy key cached dùng cho hàm trên truyền vào là space</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">GDPRUtils</span><span class="p">.</span><span class="na">canShowAd</span><span class="w"> </span><span class="c1">// true  là user bấm consent, false là user bấm do not consent</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">GDPRUtils</span><span class="p">.</span><span class="na">isGDPR</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">)</span><span class="c1">// true là trong danh sách cần xin consent, false không trong danh sách consent</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="n">Admob</span><span class="p">{</span><span class="n">Type</span><span class="p">}.</span><span class="na">getMapAdLoader</span><span class="p">()</span><span class="w"> </span><span class="c1">// cung cấp map cached theo idCached ( chú ý ad full màn đang cached theo id, adview cached theo space)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Admob</span><span class="p">{</span><span class="n">Type</span><span class="p">}.</span><span class="na">getKeyCached</span><span class="p">(</span><span class="n">space</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="c1">// dùng hàm này để lấy key cached dùng cho hàm trên truyền vào là space</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">GDPRUtils</span><span class="p">.</span><span class="na">canShowAd</span><span class="w"> </span><span class="c1">// true  là user bấm consent, false là user bấm do not consent</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">GDPRUtils</span><span class="p">.</span><span class="na">isGDPR</span><span class="p">(</span><span class="n">applicationContext</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">)</span><span class="c1">// true là trong danh sách cần xin consent, false không trong danh sách consent</span>
 </span></code></pre></div>
 <h2 id="version-127">Version 1.2.7<a class="headerlink" href="#version-127" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Thêm logic control CTR native collapsible . Dùng biến isFakeClose: nếu true click ad, false sẽ hoạt động bình thường.
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="n">AdmobNativeCollapsible</span><span class="p">.</span><span class="na">show</span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">        </span><span class="n">space</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="n">adContainer</span><span class="p">:</span><span class="w"> </span><span class="n">ViewGroup</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="n">lifecycle</span><span class="p">:</span><span class="w"> </span><span class="n">Lifecycle?,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">layoutRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">collapsibleLayoutRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">hd_ad_native_ads_large_collap_demo</span><span class="p">,</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">layoutLoadingRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="n">forceLoadNewAdIfShowed</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">blurMediaImage</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="n">isFakeClose</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">adCallback</span><span class="p">:</span><span class="w"> </span><span class="n">AdCallback? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="p">)</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="n">AdmobNativeCollapsible</span><span class="p">.</span><span class="na">show</span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">        </span><span class="n">space</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="n">adContainer</span><span class="p">:</span><span class="w"> </span><span class="n">ViewGroup</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="n">lifecycle</span><span class="p">:</span><span class="w"> </span><span class="n">Lifecycle?,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">layoutRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">collapsibleLayoutRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">hd_ad_native_ads_large_collap_demo</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">layoutLoadingRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="n">forceLoadNewAdIfShowed</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="n">blurMediaImage</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="n">isFakeClose</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="n">adCallback</span><span class="p">:</span><span class="w"> </span><span class="n">AdCallback? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">)</span>
 </span></code></pre></div></li>
 </ul>
 <h2 id="version-126">Version 1.2.6<a class="headerlink" href="#version-126" title="Permanent link">&para;</a></h2>
@@ -1280,23 +1363,23 @@ tự động đăng kí activity ứng dụng để show ad full màn hình. N�
 <p>[Lỗi liên quan] Nếu bạn AdsSDK.init sau khi activity chính của bạn khởi động mà không đăng kí registerProcessLifeOwner và registerActivityLifecycle từ sớm. Sẽ không có acitivty nào được lưu lại và hỗ trợ show ad full màn hình. Ở versio cũ hơn sẽ không xuất hiện callback</p>
 </li>
 <li>[Sửa] Tách registerProcessLifeOwner và registerActivityLifecycle chủ động đăng kí. Thêm callback onAdOff nếu không có activity tránh kẹt logic chuyển màn.
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">init</span><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">        </span><span class="n">application</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="n">pathAssetConfigAds</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="n">isDebug</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">isAutoRegisterActivityAndProcess</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="n">onSuccess</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">):</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">registerProcessLifeOwner</span><span class="p">()</span><span class="w">  </span><span class="err">\\</span><span class="w"> </span><span class="n">đăng</span><span class="w"> </span><span class="n">kí</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">để</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">appresume</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">registerActivityLifecycle</span><span class="p">(</span><span class="n">application</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="p">)</span><span class="w"> </span><span class="err">\\</span><span class="w"> </span><span class="n">đăng</span><span class="w"> </span><span class="n">kí</span><span class="w"> </span><span class="n">activity</span><span class="w"> </span><span class="n">để</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">full</span><span class="w"> </span><span class="n">màn</span><span class="w"> </span><span class="n">hình</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="err">\\</span><span class="w"> </span><span class="n">nếu</span><span class="w"> </span><span class="n">không</span><span class="w"> </span><span class="n">thể</span><span class="w"> </span><span class="n">đăng</span><span class="w"> </span><span class="n">kí</span><span class="w"> </span><span class="n">hoặc</span><span class="w"> </span><span class="n">lí</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">bất</span><span class="w"> </span><span class="n">khả</span><span class="w"> </span><span class="n">kháng</span><span class="w"> </span><span class="n">hãy</span><span class="w"> </span><span class="n">cẩn</span><span class="w"> </span><span class="n">trọng</span><span class="w"> </span><span class="n">sử</span><span class="w"> </span><span class="n">dụng</span><span class="w"> </span><span class="n">thêm</span><span class="w"> </span><span class="n">và</span><span class="w"> </span><span class="n">xoá</span><span class="w"> </span><span class="n">acitity</span><span class="w"> </span><span class="n">chính</span><span class="w"> </span><span class="n">của</span><span class="w"> </span><span class="n">bạn</span><span class="w"> </span><span class="n">thông</span><span class="w"> </span><span class="n">qua</span><span class="w"> </span><span class="n">hàm</span><span class="w"> </span><span class="n">này</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">addCurrentToListActivityInProcess</span><span class="p">(</span><span class="n">activity</span><span class="p">:</span><span class="w"> </span><span class="n">Activity</span><span class="p">)</span><span class="w"> </span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">getCurrentListActivityInProcess</span><span class="p">():</span><span class="w"> </span><span class="n">MutableSet</span><span class="o">&lt;</span><span class="n">Activity</span><span class="o">&gt;</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">removeActivityInProcess</span><span class="p">(</span><span class="n">activity</span><span class="p">:</span><span class="w"> </span><span class="n">Activity</span><span class="p">)</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">init</span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">        </span><span class="n">application</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="n">pathAssetConfigAds</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">isDebug</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">isAutoRegisterActivityAndProcess</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">onSuccess</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p">):</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">registerProcessLifeOwner</span><span class="p">()</span><span class="w">  </span><span class="err">\\</span><span class="w"> </span><span class="n">đăng</span><span class="w"> </span><span class="n">kí</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="n">để</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">appresume</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">registerActivityLifecycle</span><span class="p">(</span><span class="n">application</span><span class="p">:</span><span class="w"> </span><span class="n">Application</span><span class="p">)</span><span class="w"> </span><span class="err">\\</span><span class="w"> </span><span class="n">đăng</span><span class="w"> </span><span class="n">kí</span><span class="w"> </span><span class="n">activity</span><span class="w"> </span><span class="n">để</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="n">full</span><span class="w"> </span><span class="n">màn</span><span class="w"> </span><span class="n">hình</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="err">\\</span><span class="w"> </span><span class="n">nếu</span><span class="w"> </span><span class="n">không</span><span class="w"> </span><span class="n">thể</span><span class="w"> </span><span class="n">đăng</span><span class="w"> </span><span class="n">kí</span><span class="w"> </span><span class="n">hoặc</span><span class="w"> </span><span class="n">lí</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">bất</span><span class="w"> </span><span class="n">khả</span><span class="w"> </span><span class="n">kháng</span><span class="w"> </span><span class="n">hãy</span><span class="w"> </span><span class="n">cẩn</span><span class="w"> </span><span class="n">trọng</span><span class="w"> </span><span class="n">sử</span><span class="w"> </span><span class="n">dụng</span><span class="w"> </span><span class="n">thêm</span><span class="w"> </span><span class="n">và</span><span class="w"> </span><span class="n">xoá</span><span class="w"> </span><span class="n">acitity</span><span class="w"> </span><span class="n">chính</span><span class="w"> </span><span class="n">của</span><span class="w"> </span><span class="n">bạn</span><span class="w"> </span><span class="n">thông</span><span class="w"> </span><span class="n">qua</span><span class="w"> </span><span class="n">hàm</span><span class="w"> </span><span class="n">này</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">addCurrentToListActivityInProcess</span><span class="p">(</span><span class="n">activity</span><span class="p">:</span><span class="w"> </span><span class="n">Activity</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">getCurrentListActivityInProcess</span><span class="p">():</span><span class="w"> </span><span class="n">MutableSet</span><span class="o">&lt;</span><span class="n">Activity</span><span class="o">&gt;</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="n">AdsSDK</span><span class="p">.</span><span class="na">removeActivityInProcess</span><span class="p">(</span><span class="n">activity</span><span class="p">:</span><span class="w"> </span><span class="n">Activity</span><span class="p">)</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="p">}</span>
 </span></code></pre></div></li>
 </ul>
 <h2 id="version-125">Version 1.2.5<a class="headerlink" href="#version-125" title="Permanent link">&para;</a></h2>
@@ -1305,54 +1388,54 @@ tự động đăng kí activity ứng dụng để show ad full màn hình. N�
 <li>[Lỗi] Sửa lỗi popup windown not attach to windown tại collapsible native. Khi chuyển màn quá nhanh hoặc có thể xảy ra khi dùng dialogBottomSheetFragment</li>
 <li>[Lí do] Bởi vì viewGroup đang chưa được attachToWindow nên popupWindow.showAsDropDown(viewGroup,...) đang bị lỗi</li>
 <li>[Sửa] Kiểm tra view attachToWindow &amp; inflatter xong trước khi show
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>    Fatal Exception: java.lang.IllegalArgumentException
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    View=android.widget.PopupWindow$PopupDecorView{a7f95b1 V.E...... R.....I. 0,0-0,0} not attached to window manager
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    android.view.WindowManagerGlobal.findViewLocked (WindowManagerGlobal.java:576)
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    android.view.WindowManagerGlobal.updateViewLayout (WindowManagerGlobal.java:465)
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    android.view.WindowManagerImpl.updateViewLayout (WindowManagerImpl.java:170)
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    android.widget.PopupWindow.update (PopupWindow.java:2230)
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    android.widget.PopupWindow.update (PopupWindow.java:2351)
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    android.widget.PopupWindow.alignToAnchor (PopupWindow.java:2521)
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    android.widget.PopupWindow.-$$Nest$malignToAnchor
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    android.widget.PopupWindow$1.onViewAttachedToWindow (PopupWindow.java:245)
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    android.view.View.dispatchAttachedToWindow (View.java:22080)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>    Fatal Exception: java.lang.IllegalArgumentException
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    View=android.widget.PopupWindow$PopupDecorView{a7f95b1 V.E...... R.....I. 0,0-0,0} not attached to window manager
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    android.view.WindowManagerGlobal.findViewLocked (WindowManagerGlobal.java:576)
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    android.view.WindowManagerGlobal.updateViewLayout (WindowManagerGlobal.java:465)
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    android.view.WindowManagerImpl.updateViewLayout (WindowManagerImpl.java:170)
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    android.widget.PopupWindow.update (PopupWindow.java:2230)
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    android.widget.PopupWindow.update (PopupWindow.java:2351)
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    android.widget.PopupWindow.alignToAnchor (PopupWindow.java:2521)
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    android.widget.PopupWindow.-$$Nest$malignToAnchor
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    android.widget.PopupWindow$1.onViewAttachedToWindow (PopupWindow.java:245)
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    android.view.View.dispatchAttachedToWindow (View.java:22080)
 </span></code></pre></div></li>
 </ul>
 <h2 id="version-124">Version 1.2.4<a class="headerlink" href="#version-124" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[Update] Mở publish hàm fun dismissCollapsible(space: String) chủ động đóng collapsible native
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">dismissCollapsible</span><span class="p">(</span><span class="n">space</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">PopupWindow? </span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">dismissCollapsible</span><span class="p">(</span><span class="n">space</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">PopupWindow? </span>
 </span></code></pre></div></li>
 </ul>
 <h2 id="version-123">Version 1.2.3<a class="headerlink" href="#version-123" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[Update] Thêm blur media image ở native sử dụng bằng biến <strong>blurMediaImage: Boolean</strong>
 Tạo blurmedia đằng sau . phải thêm một  ImageView vào có id = iv_blur vào sau ad_media. có kích thước tương ứng
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">        </span><span class="n">space</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="n">adContainer</span><span class="p">:</span><span class="w"> </span><span class="n">ViewGroup</span><span class="p">,</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="n">lifecycle</span><span class="p">:</span><span class="w"> </span><span class="n">Lifecycle?,</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">layoutRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">collapsibleLayoutRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">hd_ad_native_ads_large_collap_demo</span><span class="p">,</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">layoutLoadingRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">forceLoadNewAdIfShowed</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="n">blurMediaImage</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="n">adCallback</span><span class="p">:</span><span class="w"> </span><span class="n">AdCallback? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="p">)</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">        </span><span class="n">space</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="n">adContainer</span><span class="p">:</span><span class="w"> </span><span class="n">ViewGroup</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="n">lifecycle</span><span class="p">:</span><span class="w"> </span><span class="n">Lifecycle?,</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">layoutRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">collapsibleLayoutRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="na">layout</span><span class="p">.</span><span class="na">hd_ad_native_ads_large_collap_demo</span><span class="p">,</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="nd">@LayoutRes</span><span class="w"> </span><span class="n">layoutLoadingRes</span><span class="p">:</span><span class="w"> </span><span class="kt">Int?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="n">forceLoadNewAdIfShowed</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="n">blurMediaImage</span><span class="p">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">        </span><span class="n">adCallback</span><span class="p">:</span><span class="w"> </span><span class="n">AdCallback? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="p">)</span>
 </span></code></pre></div></li>
 </ul>
 <h2 id="version-122">Version 1.2.2<a class="headerlink" href="#version-122" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[Update] Thêm hàm tắt các ad full màn hình. Hoặc activity</li>
 </ul>
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">//Lấy toàn bộ activity còn sống trong process dành cho bạn tự xử lí</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">fun</span><span class="w"> </span><span class="n">AdsSDK</span><span class="p">.</span><span class="nf">getCurrentListActivityInProcess</span><span class="p">():</span><span class="w"> </span><span class="n">MutableSet</span><span class="o">&lt;</span><span class="n">Activity</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1">// finish toàn bộ activit trong process. Vì không phân biệt được các mediation có các ad activiy nào</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1">// do vậy bạn cần truyền vào Activity của chính bạn. VD MainActivity vào except để loại trừ bị finish.</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="kd">fun</span><span class="w"> </span><span class="n">AdsSDK</span><span class="p">.</span><span class="nf">destroyAllActivityInProcess</span><span class="p">(</span><span class="k">vararg</span><span class="w"> </span><span class="n">except</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="o">&lt;*&gt;</span><span class="p">){</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">//Lấy toàn bộ activity còn sống trong process dành cho bạn tự xử lí</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">fun</span><span class="w"> </span><span class="n">AdsSDK</span><span class="p">.</span><span class="nf">getCurrentListActivityInProcess</span><span class="p">():</span><span class="w"> </span><span class="n">MutableSet</span><span class="o">&lt;</span><span class="n">Activity</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">}</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1">// finish toàn bộ activit trong process. Vì không phân biệt được các mediation có các ad activiy nào</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1">// do vậy bạn cần truyền vào Activity của chính bạn. VD MainActivity vào except để loại trừ bị finish.</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="kd">fun</span><span class="w"> </span><span class="n">AdsSDK</span><span class="p">.</span><span class="nf">destroyAllActivityInProcess</span><span class="p">(</span><span class="k">vararg</span><span class="w"> </span><span class="n">except</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="o">&lt;*&gt;</span><span class="p">){</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="version-121">Version 1.2.1<a class="headerlink" href="#version-121" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1372,22 +1455,22 @@ Tạo blurmedia đằng sau . phải thêm một  ImageView vào có id = iv_blu
 </li>
 <li>Dưới dây là các version tương thích với bản 1.2.1</li>
 <li>[Chú ý]: Vì không còn mediation nên nếu bị ad full màn hình đè (ad resume). Thì phải thêm class vào  hàm dưới cho module ads check
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">setClazzAdFullScreenOfMediation</span><span class="p">(</span><span class="k">vararg</span><span class="w"> </span><span class="n">clazz</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="o">&lt;*&gt;</span><span class="p">)</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">clearSetClazzAdFullScreenOfMediation</span><span class="p">()</span><span class="w"> </span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">setClazzAdFullScreenOfMediation</span><span class="p">(</span><span class="k">vararg</span><span class="w"> </span><span class="n">clazz</span><span class="p">:</span><span class="w"> </span><span class="n">Class</span><span class="o">&lt;*&gt;</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kd">fun</span><span class="w"> </span><span class="nf">clearSetClazzAdFullScreenOfMediation</span><span class="p">()</span><span class="w"> </span>
 </span></code></pre></div></li>
 </ul>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>   api &#39;com.google.ads.mediation:facebook:6.17.0.0&#39;
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>   api &#39;com.google.ads.mediation:adcolony:4.8.0.2&#39;
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>   api &#39;com.google.ads.mediation:applovin:12.5.0.1&#39;
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>   api &#39;com.google.ads.mediation:vungle:7.4.0.0&#39;
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>   api &#39;com.google.ads.mediation:pangle:6.0.0.8.0&#39;
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>   api &#39;com.google.ads.mediation:mintegral:16.7.81.0&#39;
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>   api(&#39;com.facebook.android:facebook-android-sdk:latest.release&#39;) {
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>       exclude group: &#39;com.google.zxing&#39;
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>   }
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>   api(&quot;com.unity3d.ads:unity-ads:4.9.2&quot;)
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>   api(&quot;com.google.ads.mediation:unity:4.9.2.0&quot;)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>   api &#39;com.google.ads.mediation:facebook:6.17.0.0&#39;
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>   api &#39;com.google.ads.mediation:adcolony:4.8.0.2&#39;
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>   api &#39;com.google.ads.mediation:applovin:12.5.0.1&#39;
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>   api &#39;com.google.ads.mediation:vungle:7.4.0.0&#39;
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>   api &#39;com.google.ads.mediation:pangle:6.0.0.8.0&#39;
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>   api &#39;com.google.ads.mediation:mintegral:16.7.81.0&#39;
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>   api(&#39;com.facebook.android:facebook-android-sdk:latest.release&#39;) {
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>       exclude group: &#39;com.google.zxing&#39;
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>   }
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>   api(&quot;com.unity3d.ads:unity-ads:4.9.2&quot;)
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>   api(&quot;com.google.ads.mediation:unity:4.9.2.0&quot;)
 </span></code></pre></div>
 <h2 id="version-120-big-update">Version 1.2.0 (Big update)<a class="headerlink" href="#version-120-big-update" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1401,58 +1484,58 @@ Tạo blurmedia đằng sau . phải thêm một  ImageView vào có id = iv_blu
 </li>
 <li>
 <p>callback mới: 
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">:</span><span class="w"> </span><span class="n">AdModel</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">            </span><span class="k">super</span><span class="p">.</span><span class="na">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">)</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">            </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onAdImpression: </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">spaceName</span><span class="si">}</span><span class="s"> _ </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">id</span><span class="si">}</span><span class="s"> |&quot;</span><span class="p">)</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="p">}</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">:</span><span class="w"> </span><span class="n">AdModel</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">            </span><span class="k">super</span><span class="p">.</span><span class="na">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">)</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">            </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onAdImpression: </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">spaceName</span><span class="si">}</span><span class="s"> _ </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">id</span><span class="si">}</span><span class="s"> |&quot;</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="p">}</span>
 </span></code></pre></div></p>
 </li>
 <li>
 <p>callback cũ: 
-<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">:</span><span class="w"> </span><span class="n">AdModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">            </span><span class="k">super</span><span class="p">.</span><span class="na">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">)</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">            </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onAdImpression: </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">spaceName</span><span class="si">}</span><span class="s"> _ </span><span class="si">${</span><span class="n">id</span><span class="si">}</span><span class="s"> |&quot;</span><span class="p">)</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="p">}</span>
+<div class="language-kotlin highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">:</span><span class="w"> </span><span class="n">AdModel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">            </span><span class="k">super</span><span class="p">.</span><span class="na">onAdImpression</span><span class="p">(</span><span class="n">adsModel</span><span class="p">)</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">            </span><span class="n">Log</span><span class="p">.</span><span class="na">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;onAdImpression: </span><span class="si">${</span><span class="n">adsModel</span><span class="p">.</span><span class="na">spaceName</span><span class="si">}</span><span class="s"> _ </span><span class="si">${</span><span class="n">id</span><span class="si">}</span><span class="s"> |&quot;</span><span class="p">)</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">        </span><span class="p">}</span>
 </span></code></pre></div></p>
 </li>
 </ul>
 <h2 id="version-111">Version 1.1.1<a class="headerlink" href="#version-111" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Hạ cấp appfly về bản cũ trước đó : Sửa lỗi sau 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>No virtual method sendAdRevenue(Landroid/content/Context;Ljava/util/Map;)V in class Lcom/appsflyer/AppsFlyerLib; or its super classes (declaration of &#39;com.appsflyer.AppsFlyerLib&#39; appears in /data/app/~~SWEPUGEQbTMBNVW8AaHpZw==/
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>No virtual method sendAdRevenue(Landroid/content/Context;Ljava/util/Map;)V in class Lcom/appsflyer/AppsFlyerLib; or its super classes (declaration of &#39;com.appsflyer.AppsFlyerLib&#39; appears in /data/app/~~SWEPUGEQbTMBNVW8AaHpZw==/
 </span></code></pre></div></li>
 </ul>
 <h2 id="version-110">Version 1.1.0<a class="headerlink" href="#version-110" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Thêm record exception vào các hàm của appflyer . Thử fix lỗi crash sau</li>
 </ul>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a> Fatal Exception: java.lang.IllegalArgumentException: key [und_aaland] in alias:language contains unsupported fields combination.
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>       at android.icu.util.ULocale$AliasReplacer.loadAliasData(ULocale.java:1294)
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>       at android.icu.util.ULocale$AliasReplacer.replace(ULocale.java:1184)
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>       at android.icu.util.ULocale.canonicalize(ULocale.java:1680)
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>       at android.icu.util.ULocale.createCanonical(ULocale.java:443)
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>       at android.icu.impl.CalendarUtil.getCalendarType(CalendarUtil.java:52)
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>       at android.icu.util.Calendar.getCalendarTypeForLocale(Calendar.java:1716)
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>       at android.icu.util.Calendar.createInstance(Calendar.java:1731)
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>       at android.icu.util.Calendar.getInstanceInternal(Calendar.java:1701)
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>       at android.icu.util.Calendar.getInstance(Calendar.java:1656)
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>       at libcore.icu.LocaleData.initializeCalendarData(LocaleData.java:252)
-</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>       at libcore.icu.LocaleData.initLocaleData(LocaleData.java:217)
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>       at libcore.icu.LocaleData.get(LocaleData.java:195)
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>       at java.util.Calendar.setWeekCountData(Calendar.java:3387)
-</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>       at java.util.Calendar.&lt;init&gt;(Calendar.java:1612)
-</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>       at java.util.GregorianCalendar.&lt;init&gt;(GregorianCalendar.java:627)
-</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>       at java.util.Calendar.createCalendar(Calendar.java:1684)
-</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>       at java.util.Calendar.getInstance(Calendar.java:1652)
-</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>       at java.text.SimpleDateFormat.initializeCalendar(SimpleDateFormat.java:758)
-</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>       at java.text.SimpleDateFormat.&lt;init&gt;(SimpleDateFormat.java:702)
-</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>       at com.appsflyer.internal.AFb1rSDK.valueOf(SourceFile:61)
-</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>       at com.appsflyer.internal.AFb1tSDK.AFInAppEventParameterName(:57)
-</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>       at com.appsflyer.internal.AFa1dSDK$AFa1xSDK.AFInAppEventType(SourceFile:2575)
-</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>       at com.appsflyer.internal.AFd1tSDK$1.run(:221)
-</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>       at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
-</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>       at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
-</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>       at java.lang.Thread.run(Thread.java:1012)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a> Fatal Exception: java.lang.IllegalArgumentException: key [und_aaland] in alias:language contains unsupported fields combination.
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>       at android.icu.util.ULocale$AliasReplacer.loadAliasData(ULocale.java:1294)
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>       at android.icu.util.ULocale$AliasReplacer.replace(ULocale.java:1184)
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>       at android.icu.util.ULocale.canonicalize(ULocale.java:1680)
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>       at android.icu.util.ULocale.createCanonical(ULocale.java:443)
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>       at android.icu.impl.CalendarUtil.getCalendarType(CalendarUtil.java:52)
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>       at android.icu.util.Calendar.getCalendarTypeForLocale(Calendar.java:1716)
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>       at android.icu.util.Calendar.createInstance(Calendar.java:1731)
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>       at android.icu.util.Calendar.getInstanceInternal(Calendar.java:1701)
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>       at android.icu.util.Calendar.getInstance(Calendar.java:1656)
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>       at libcore.icu.LocaleData.initializeCalendarData(LocaleData.java:252)
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>       at libcore.icu.LocaleData.initLocaleData(LocaleData.java:217)
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>       at libcore.icu.LocaleData.get(LocaleData.java:195)
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>       at java.util.Calendar.setWeekCountData(Calendar.java:3387)
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>       at java.util.Calendar.&lt;init&gt;(Calendar.java:1612)
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>       at java.util.GregorianCalendar.&lt;init&gt;(GregorianCalendar.java:627)
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>       at java.util.Calendar.createCalendar(Calendar.java:1684)
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>       at java.util.Calendar.getInstance(Calendar.java:1652)
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>       at java.text.SimpleDateFormat.initializeCalendar(SimpleDateFormat.java:758)
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>       at java.text.SimpleDateFormat.&lt;init&gt;(SimpleDateFormat.java:702)
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>       at com.appsflyer.internal.AFb1rSDK.valueOf(SourceFile:61)
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>       at com.appsflyer.internal.AFb1tSDK.AFInAppEventParameterName(:57)
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>       at com.appsflyer.internal.AFa1dSDK$AFa1xSDK.AFInAppEventType(SourceFile:2575)
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>       at com.appsflyer.internal.AFd1tSDK$1.run(:221)
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>       at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>       at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>       at java.lang.Thread.run(Thread.java:1012)
 </span></code></pre></div>
 <h2 id="version-109">Version 1.0.9<a class="headerlink" href="#version-109" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1541,13 +1624,13 @@ Tạo blurmedia đằng sau . phải thêm một  ImageView vào có id = iv_blu
         
         
           
-          <a href="../ad/adsdk/" class="md-footer__link md-footer__link--next" aria-label="Next: Hàm cấu hình AdsSDK">
+          <a href="../log-mediation/" class="md-footer__link md-footer__link--next" aria-label="Next: Cập nhật mediation">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Hàm cấu hình AdsSDK
+                Cập nhật mediation
               </div>
             </div>
             <div class="md-footer__button md-icon">
