@@ -5,6 +5,18 @@
 - Ví dụ phiên bản **1.0.9-ktx-support-below-1.8** thì tương ứng logic với bản **1.0.9** chính
 -  [Xem version mới nhất](#version-raw)
 
+## Version 1.2.16 | 1.3.6
+- [Update] - add AppsFlyer onConversionDataSuccess Listener (add default listener) -> tracking utm-source
+
+
+## Version 1.2.14, 1.2.15 | 1.3.4. 1.3.5
+- [Update] - add small ad loading native collapsible
+
+## Version 1.2.13 | 1.3.3
+- [Update] - Fix native meta click 
+
+## Version 1.2.12 | 1.3.2
+- [Update] - Xoá log và tối ưu lại login , debug
 
 ## Version 1.2.11 | 1.3.1
 - [Update] - Thêm loading navite collapsible ở dạng kích thước expand. **autoShowLoadingLarge: Boolean = false**
