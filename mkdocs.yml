@@ -30,6 +30,7 @@ nav:
   - Một vài tính năng khác: 
     - Cơ chế cached key: cached-key.md
     - Custom loading ad: custom-loading.md
+    - Native Remote Layout: native_remote.md
     - Cấu hình load ad thật : config-load-ad-real.md
     - Tắt ad theo version : disable-ad-version.md
     - Floating view debug : floating-debug-view.md
